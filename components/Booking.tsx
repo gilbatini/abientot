@@ -22,6 +22,19 @@ export default function Booking() {
         guests: parseInt(form.guests) || 1, message: form.message,
       })
       if (sbError) throw sbError
+      // Fire-and-forget email notification
+      fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'booking', data: {
+          name:        form.name,
+          email:       form.email,
+          destination: form.destination,
+          travel_date: form.date || null,
+          guests:      parseInt(form.guests) || 1,
+          message:     form.message,
+        }}),
+      }).catch(() => {}) // fire and forget, don't block UX
       setSent(true)
     } catch {
       setError('Something went wrong. Please try again or call us directly.')

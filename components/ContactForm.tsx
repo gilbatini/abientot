@@ -61,6 +61,13 @@ export default function ContactForm() {
       return
     }
 
+    // Fire-and-forget email notification
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'contact', data: form }),
+    }).catch(() => {})
+
     setStatus('success')
     setForm(EMPTY)
   }

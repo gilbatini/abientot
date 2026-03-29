@@ -5,7 +5,7 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-ke
 
 export const supabase = createClient(supabaseUrl, supabaseKey)
 
-// Types for database tables (extend as you build out Supabase)
+// Types for database tables
 export type BookingInquiry = {
   id?: string
   name: string
@@ -15,6 +15,7 @@ export type BookingInquiry = {
   travel_date?: string
   guests?: number
   message?: string
+  status?: 'new' | 'contacted' | 'confirmed' | 'cancelled'
   created_at?: string
 }
 
@@ -25,5 +26,21 @@ export type ContactMessage = {
   phone?: string
   subject?: string
   message: string
+  created_at?: string
+}
+
+export type Package = {
+  id?: string
+  title: string
+  destination: string
+  duration: string
+  group_size?: string
+  price: string
+  description?: string
+  image_url?: string
+  includes?: string[]
+  tag?: string
+  rating?: number
+  published?: boolean
   created_at?: string
 }
