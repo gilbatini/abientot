@@ -18,7 +18,7 @@ export default function Booking() {
     try {
       const { error: sbError } = await supabase.from('booking_inquiries').insert({
         name: form.name, email: form.email,
-        destination: form.destination, travel_date: form.date,
+        destination: form.destination, travel_date: form.date || null,
         guests: parseInt(form.guests) || 1, message: form.message,
       })
       if (sbError) throw sbError

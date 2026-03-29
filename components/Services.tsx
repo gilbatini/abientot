@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Plane, Car, Building, Tent, Coffee, Binoculars } from 'lucide-react'
+import { ArrowRight, Plane, Car, Building, Tent, Coffee, Eye } from 'lucide-react'
 import { SERVICES } from '@/lib/constants'
 
 const ICONS: Record<string, React.ReactNode> = {
@@ -8,7 +8,7 @@ const ICONS: Record<string, React.ReactNode> = {
   building:   <Building className="w-5 h-5" />,
   tent:       <Tent className="w-5 h-5" />,
   coffee:     <Coffee className="w-5 h-5" />,
-  binoculars: <Binoculars className="w-5 h-5" />,
+  binoculars: <Eye className="w-5 h-5" />,
 }
 
 export default function Services() {
