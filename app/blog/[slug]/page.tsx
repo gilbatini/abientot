@@ -17,7 +17,7 @@ const ARTICLES: Record<string, { sections: { heading?: string; body: string }[] 
         body: `No Uganda safari is complete without a gorilla trek. Bwindi Impenetrable National Park is home to nearly half the world's remaining mountain gorillas — roughly 459 individuals across 22 habituated family groups. Trekking into the forest at dawn, following your expert ranger through ancient jungle, and coming face to face with a silverback is an experience that permanently changes how you see the natural world. Permits are required and must be booked in advance; we manage the entire permit process for our clients.`,
       },
       {
-        heading: 'Murchison Falls — The World's Most Powerful Waterfall',
+        heading: "Murchison Falls — The World's Most Powerful Waterfall",
         body: `In northwestern Uganda, the entire force of the Nile River is compressed through a 7-metre gap in the rocks, creating Murchison Falls — the most powerful waterfall on earth. The national park surrounding it is Uganda's largest and oldest, home to lions, elephants, buffalos, hippos, crocodiles, giraffes, and over 450 bird species. A classic Murchison package combines morning game drives through the savannah with an afternoon boat cruise up the Nile to the base of the falls.`,
       },
       {
@@ -25,7 +25,7 @@ const ARTICLES: Record<string, { sections: { heading?: string; body: string }[] 
         body: `Queen Elizabeth National Park is Uganda's most visited park — and for good reason. The Kazinga Channel, a 40-kilometre natural waterway connecting Lakes George and Edward, is home to one of the highest concentrations of hippos on the continent. The park's Ishasha sector is famous for its tree-climbing lions, a rare behaviour seen in only two places on earth. Game drives at dawn reveal elephants, buffalos, leopards, and the strikingly beautiful Uganda kob, the country's national animal.`,
       },
       {
-        heading: 'Kidepo Valley — Uganda's Hidden Wilderness',
+        heading: "Kidepo Valley — Uganda's Hidden Wilderness",
         body: `For the true off-the-beaten-path adventurer, Kidepo Valley National Park in the remote northeast is in a class of its own. Often ranked among Africa's finest parks by conservationists, Kidepo is home to 77 mammal species — including cheetahs, ostriches, and Burchell's zebras found nowhere else in Uganda. The remoteness is part of its magic; you can spend a full day on game drives without encountering another vehicle.`,
       },
       {
@@ -73,7 +73,7 @@ const ARTICLES: Record<string, { sections: { heading?: string; body: string }[] 
         body: `On Uganda's western border with the Democratic Republic of Congo, the Rwenzori Mountains rise to 5,109 metres at their highest point — Margherita Peak on Mount Stanley, the third-highest point in Africa. Known as the Mountains of the Moon since antiquity, the Rwenzoris are a UNESCO World Heritage Site and one of Africa's most extraordinary trekking destinations. The mountain slopes are draped in otherworldly Afroalpine vegetation: giant lobelias, enormous groundsels, and heathers the size of trees. Multi-day trekking routes take hikers through bamboo forest, moorland, and permanent glaciers.`,
       },
       {
-        heading: 'Lake Victoria — Africa's Largest Lake',
+        heading: "Lake Victoria — Africa's Largest Lake",
         body: `Stretching across the borders of Uganda, Kenya, and Tanzania, Lake Victoria is the world's largest tropical lake and the second-largest freshwater lake on earth by surface area. Uganda's shoreline offers boat excursions to the Sese Islands — an archipelago of 84 lush islands dotted with fishing villages, tropical forest, and pristine beaches. The lake is also the source of the White Nile, which begins its 6,650-kilometre journey to the Mediterranean at Jinja, Uganda's adventure capital.`,
       },
       {
