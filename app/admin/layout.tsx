@@ -19,7 +19,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router   = useRouter()
   const pathname = usePathname()
 
+  const isLoginPage = pathname === '/admin/login'
+
   useEffect(() => {
+    // Login page handles its own auth — don't check here or we loop forever
+    if (isLoginPage) {
+      setChecking(false)
+      return
+    }
     const supabase = getAdminSupabase()
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session) {
@@ -28,7 +35,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         setChecking(false)
       }
     })
-  }, [router])
+  }, [router, isLoginPage])
+
+  // Render the login page directly — it has its own full-screen layout
+  if (isLoginPage) {
+    return <>{children}</>
+  }
 
   if (checking) {
     return (
