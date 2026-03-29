@@ -1,9 +1,14 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { LayoutDashboard, Calendar, Inbox, Package, LogOut, X } from 'lucide-react'
-import { getAdminSupabase } from '@/lib/supabase-admin'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 
 interface AdminSidebarProps {
   isOpen: boolean
@@ -19,16 +24,14 @@ const NAV_ITEMS = [
 
 export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
   const pathname = usePathname()
-  const router   = useRouter()
 
   function isActive(href: string, exact: boolean) {
     return exact ? pathname === href : pathname.startsWith(href)
   }
 
   async function handleSignOut() {
-    const supabase = getAdminSupabase()
     await supabase.auth.signOut()
-    router.push('/admin/login')
+    window.location.href = '/admin/login'
   }
 
   return (
