@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { ChevronDown, X, ChevronRight } from 'lucide-react'
 import { NAV_LINKS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
@@ -45,7 +44,8 @@ export default function Nav() {
               'w-10 h-10 flex-shrink-0 transition-all duration-300',
               scrolled ? '' : '[filter:brightness(0)_invert(1)]'
             )}>
-              <Image src="/logo.svg" alt="À Bientôt" width={40} height={40} priority />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo.svg" alt="À Bientôt" width={40} height={40} />
             </div>
             <div className="flex flex-col">
               <span className={cn(
@@ -155,7 +155,8 @@ export default function Nav() {
         {/* Header */}
         <div className="flex items-center justify-between px-8 py-6 border-b border-[#D8E8D0]">
           <Link href="/" className="flex items-center gap-2" onClick={() => setMobile(false)}>
-            <Image src="/logo.svg" alt="À Bientôt" width={36} height={36} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.svg" alt="À Bientôt" width={36} height={36} />
             <span className="font-caps text-[14px] font-semibold tracking-[0.1em] text-brand-teal">À Bientôt</span>
           </Link>
           <button
