@@ -32,7 +32,7 @@ export default function Hero() {
 
       {/* Overlay */}
       <div className="absolute inset-0 z-[2]" style={{
-        background: 'linear-gradient(to bottom, rgba(10,26,10,0.55) 0%, rgba(10,26,10,0.15) 18%, rgba(10,26,10,0.35) 55%, rgba(10,26,10,0.97) 100%)'
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 8%, rgba(10,26,10,0.15) 25%, rgba(10,26,10,0.35) 55%, rgba(10,26,10,0.97) 100%)'
       }} />
 
       {/* Content */}
