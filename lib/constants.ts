@@ -46,11 +46,11 @@ export const NAV_LINKS = [
 ]
 
 export const DESTINATIONS = [
-  { name: 'Bwindi Forest',       country: 'Uganda', tag: 'Gorilla Trekking', nights: '3–5', image: '/images/bwindi.jpg' },
-  { name: 'Murchison Falls',     country: 'Uganda', tag: 'Wildlife Safari',  nights: '2–4', image: '/images/murchison.jpg' },
-  { name: 'Queen Elizabeth NP',  country: 'Uganda', tag: 'Big Five',         nights: '2–3', image: '/images/queen-elizabeth.jpg' },
-  { name: 'Lake Bunyonyi',       country: 'Uganda', tag: 'Relaxation',       nights: '1–2', image: '/images/lake-bunyonyi.jpg' },
-  { name: 'Kidepo Valley',       country: 'Uganda', tag: 'Off the Beaten Path', nights: '3–4', image: '/images/kidepo.jpg' },
+  { name: 'Bwindi Forest',       country: 'Uganda', tag: 'Gorilla Trekking',    nights: '3–5', image: 'https://abientot-nextjs.vercel.app/images/gallery-1.jpg' },
+  { name: 'Murchison Falls',     country: 'Uganda', tag: 'Wildlife Safari',      nights: '2–4', image: 'https://abientot-nextjs.vercel.app/images/gallery-2.jpg' },
+  { name: 'Queen Elizabeth NP',  country: 'Uganda', tag: 'Big Five',             nights: '2–3', image: 'https://abientot-nextjs.vercel.app/images/gallery-3.jpg' },
+  { name: 'Lake Bunyonyi',       country: 'Uganda', tag: 'Relaxation',           nights: '1–2', image: 'https://abientot-nextjs.vercel.app/images/gallery-4.jpg' },
+  { name: 'Kidepo Valley',       country: 'Uganda', tag: 'Off the Beaten Path',  nights: '3–4', image: 'https://abientot-nextjs.vercel.app/images/gallery-5.jpg' },
 ]
 
 export const SERVICES = [
