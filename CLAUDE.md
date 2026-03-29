@@ -151,6 +151,7 @@ See `.env.local.example`. Required:
 - **Platform:** Vercel
 - **Repo:** `github.com/gilbatini/abientot`
 - **Branch:** `main` → auto-deploys to production
+- **Live URL:** https://gilbatini-abientot.vercel.app
 - **Domain:** TBD (configure in Vercel + Cloudflare)
 
 ---
@@ -164,23 +165,25 @@ See `.env.local.example`. Required:
 - [x] Services grid
 - [x] Booking form (Supabase-ready)
 - [x] Testimonials
-- [x] Blog section
+- [x] Blog section (homepage teaser)
 - [x] Trip Planner CTA
 - [x] Footer (matt black + teal text)
-- [x] About, Contact, Safari Packages pages (stubs)
+- [x] About page — story, team, values, FAQ
+- [x] Contact page — Supabase form, info cards, map
+- [x] Safari Packages page — 6 tour packages + services grid
+- [x] Blog listing page — category filter, post cards
+- [x] Blog individual posts — 3 full articles with related posts
+- [x] Reviews page — rating summary, testimonials, platform CTAs
+- [x] WhatsApp float button — all pages, pulse animation
 
-## 🔲 Next Steps for Claude Code
+## 🔲 Next Steps
 
-1. **Wire up Supabase** — create tables, test booking form submission
-2. **Blog page** — fetch posts from Supabase `blog_posts` table
-3. **Individual blog posts** — `app/blog/[slug]/page.tsx`
-4. **Admin dashboard** — view/manage booking inquiries
-5. **Email notifications** — `app/api/contact/route.ts` using Resend or Nodemailer
-6. **WhatsApp float button** — sticky bottom-right on all pages
-7. **Image optimization** — move hero slides to Supabase Storage / Cloudinary
-8. **SEO** — `sitemap.ts`, `robots.ts`, structured data
-9. **Animations** — scroll reveal with Framer Motion
-10. **Individual package pages** — `app/safari-packages/[slug]/page.tsx`
+1. **Admin dashboard** — view/manage booking inquiries from Supabase
+2. **Email notifications** — `app/api/contact/route.ts` using Resend or Nodemailer
+3. **Image optimization** — move hero slides to Supabase Storage / Cloudinary
+4. **SEO** — `sitemap.ts`, `robots.ts`, structured data
+5. **Animations** — scroll reveal with Framer Motion
+6. **Individual package pages** — `app/safari-packages/[slug]/page.tsx`
 
 ---
 
