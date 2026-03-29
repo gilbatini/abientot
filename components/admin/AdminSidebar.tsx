@@ -2,7 +2,6 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import Image from 'next/image'
 import { LayoutDashboard, Calendar, Inbox, Package, LogOut, X } from 'lucide-react'
 import { getAdminSupabase } from '@/lib/supabase-admin'
 

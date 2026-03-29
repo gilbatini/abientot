@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 import { ChevronDown, ChevronUp, Trash2 } from 'lucide-react'
 import { getAdminSupabase } from '@/lib/supabase-admin'
 import type { BookingInquiry } from '@/lib/supabase'
@@ -118,9 +118,8 @@ export default function BookingsPage() {
               </thead>
               <tbody>
                 {filtered.map(b => (
-                  <>
+                  <Fragment key={b.id}>
                     <tr
-                      key={b.id}
                       className="border-b border-gray-50 last:border-0 hover:bg-gray-50/40 transition-colors"
                     >
                       {/* Expand toggle */}
@@ -173,7 +172,7 @@ export default function BookingsPage() {
 
                     {/* Expanded message row */}
                     {expanded === b.id && (
-                      <tr key={`${b.id}-expanded`} className="bg-amber-50/30">
+                      <tr className="bg-amber-50/30">
                         <td colSpan={10} className="px-6 py-4">
                           <div className="flex flex-col gap-1">
                             <p className="font-caps text-[8px] tracking-[0.2em] uppercase text-gray-400">Message</p>
@@ -184,7 +183,7 @@ export default function BookingsPage() {
                         </td>
                       </tr>
                     )}
-                  </>
+                  </Fragment>
                 ))}
               </tbody>
             </table>
