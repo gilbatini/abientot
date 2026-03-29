@@ -3,7 +3,7 @@ export const BRAND = {
   tagline:  "Let's Explore",
   slogan:   'Crafted for those who dare to explore',
   email:    'abientottours2023@gmail.com',
-  phones:   ['+256 788 138 721', '+256 752 338 938', '+256 757 163 630', '+256 704 100 060'],
+  phones:   ['+256 788 138 721', '+256 752 338 938', '+256 757 163 630', '+256 773 700 030', '+256 704 100 060'],
   address:  'Reed Complex, Ntinda Kiwatule, Kampala, Uganda',
   hours: {
     weekdays: 'Mon–Fri 8am–6pm',
