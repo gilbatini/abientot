@@ -32,14 +32,25 @@ export default function AdminLoginPage() {
     setLoading(true)
     try {
       const supabase = getAdminSupabase()
-      const { error: authError } = await supabase.auth.signInWithPassword({
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
         email:    email.trim(),
         password: password.trim(),
       })
-      if (authError) throw authError
+
+      console.log('Auth result:', JSON.stringify({ user: data?.user?.email, error: authError?.message }))
+
+      if (authError) {
+        console.error('Supabase auth error:', authError)
+        throw authError
+      }
+
+      // Refresh the router so middleware picks up the new session cookie
+      router.refresh()
       router.replace('/admin')
-    } catch (err: any) {
-      setError(err?.message ?? 'Invalid email or password. Please try again.')
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Invalid email or password. Please try again.'
+      console.error('Login failed:', message)
+      setError(message)
     } finally {
       setLoading(false)
     }
