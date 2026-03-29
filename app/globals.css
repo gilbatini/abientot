@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-teal:        #2BBFB3;
+    --brand-teal-mid:    #239e97;
+    --brand-gold:        #D4A843;
+    --brand-gold-light:  #F0C060;
+    --brand-earth:       #C4622D;
+    --bg-cream:          #FDFAF5;
+    --bg-cream-alt:      #F5F0E8;
+    --text-dark:         #1A2E1A;
+    --text-mid:          #4A6741;
+    --text-soft:         #8FA88A;
+    --border-soft:       #D8E8D0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply font-body bg-brand-cream text-brand-dark antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display font-light leading-tight;
+  }
+}
+
+@layer components {
+  /* Eyebrow label */
+  .eyebrow {
+    @apply flex items-center gap-3 mb-3;
+  }
+  .eyebrow-bar {
+    @apply w-7 h-px bg-brand-earth;
+  }
+  .eyebrow-tag {
+    @apply font-caps text-[9px] font-medium tracking-[0.26em] uppercase text-brand-earth;
+  }
+
+  /* Section title */
+  .sec-title {
+    @apply font-display text-[clamp(40px,4.5vw,68px)] font-light leading-[1.06] tracking-[-0.01em] mb-4 text-brand-dark;
+  }
+  .sec-subtitle {
+    @apply font-body text-[15px] font-light leading-[1.85] text-[#4A6741] max-w-xl tracking-[0.01em];
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2.5 font-caps text-[10px] font-medium tracking-[0.2em] uppercase
+           bg-brand-teal text-white px-8 py-4 rounded-lg
+           transition-all duration-300
+           hover:bg-brand-teal-mid hover:-translate-y-0.5 hover:shadow-lg;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2.5 font-caps text-[10px] font-medium tracking-[0.2em] uppercase
+           bg-white/10 text-white border border-white/40 px-8 py-4 rounded-lg backdrop-blur-sm
+           transition-all duration-300
+           hover:bg-white/20 hover:border-white/70;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white border border-[#D8E8D0] rounded-2xl overflow-hidden
+           transition-all duration-300
+           hover:-translate-y-1 hover:shadow-xl;
+  }
+}
+
+@layer utilities {
+  .text-gradient-teal {
+    @apply bg-gradient-to-r from-brand-teal to-[#40B4A0] bg-clip-text text-transparent;
+  }
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #e8d5b7, #f0c060, #d4a843);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
