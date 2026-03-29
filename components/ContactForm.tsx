@@ -56,8 +56,9 @@ export default function ContactForm() {
     })
 
     if (dbError) {
+      console.error('Contact form error:', dbError.message, dbError.code)
       setStatus('error')
-      setError('Something went wrong. Please email us directly or call.')
+      setError('Error: ' + dbError.message)
       return
     }
 

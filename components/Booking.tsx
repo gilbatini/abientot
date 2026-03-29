@@ -36,8 +36,10 @@ export default function Booking() {
         }}),
       }).catch(() => {}) // fire and forget, don't block UX
       setSent(true)
-    } catch {
-      setError('Something went wrong. Please try again or call us directly.')
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : JSON.stringify(err)
+      console.error('Booking submit error:', msg)
+      setError('Something went wrong: ' + msg)
     } finally {
       setLoading(false)
     }
