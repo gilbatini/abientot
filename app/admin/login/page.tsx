@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import { Loader2, AlertCircle } from 'lucide-react'
 import { getAdminSupabase } from '@/lib/supabase-admin'
 
@@ -10,15 +9,13 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState('')
   const [loading,  setLoading]  = useState(false)
   const [error,    setError]    = useState('')
-  const router = useRouter()
-
   // Redirect if already logged in
   useEffect(() => {
     const supabase = getAdminSupabase()
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) router.replace('/admin')
+      if (session) window.location.href = '/admin'
     })
-  }, [router])
+  }, [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -31,27 +28,26 @@ export default function AdminLoginPage() {
 
     setLoading(true)
     try {
+      if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+        throw new Error('Supabase environment variables are not configured.')
+      }
+
       const supabase = getAdminSupabase()
       const { data, error: authError } = await supabase.auth.signInWithPassword({
         email:    email.trim(),
         password: password.trim(),
       })
 
-      console.log('Auth result:', JSON.stringify({ user: data?.user?.email, error: authError?.message }))
+      console.log('Auth result:', { user: data?.user?.email, error: authError?.message })
 
-      if (authError) {
-        console.error('Supabase auth error:', authError)
-        throw authError
-      }
+      if (authError) throw authError
 
-      // Refresh the router so middleware picks up the new session cookie
-      router.refresh()
-      router.replace('/admin')
+      // Hard redirect so middleware sees the fresh session cookie
+      window.location.href = '/admin'
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'Invalid email or password. Please try again.'
+      const message = err instanceof Error ? err.message : 'Invalid email or password.'
       console.error('Login failed:', message)
       setError(message)
-    } finally {
       setLoading(false)
     }
   }
