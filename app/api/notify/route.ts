@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
-  const resend = new Resend(process.env.RESEND_API_KEY)
+  const resend = new Resend(process.env.RESEND_API_KEY || '')
   const body = await request.json()
   const { type, data } = body // type: 'booking' | 'contact', data: form fields
 
