@@ -2,7 +2,12 @@
 
 import { useEffect, useState, Fragment } from 'react'
 import { ChevronDown, ChevronUp, Trash2 } from 'lucide-react'
-import { getAdminSupabase } from '@/lib/supabase-admin'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 import type { BookingInquiry } from '@/lib/supabase'
 
 type Status = 'new' | 'contacted' | 'confirmed' | 'cancelled'
@@ -32,7 +37,6 @@ export default function BookingsPage() {
 
   async function fetchBookings() {
     setLoading(true)
-    const supabase = getAdminSupabase()
     const { data, error } = await supabase
       .from('booking_inquiries')
       .select('*')
@@ -43,7 +47,6 @@ export default function BookingsPage() {
 
   async function updateStatus(id: string, status: Status) {
     setUpdating(id)
-    const supabase = getAdminSupabase()
     await supabase.from('booking_inquiries').update({ status }).eq('id', id)
     setBookings(prev => prev.map(b => b.id === id ? { ...b, status } : b))
     setUpdating(null)
@@ -51,7 +54,6 @@ export default function BookingsPage() {
 
   async function deleteBooking(id: string) {
     if (!window.confirm('Delete this booking inquiry? This cannot be undone.')) return
-    const supabase = getAdminSupabase()
     await supabase.from('booking_inquiries').delete().eq('id', id)
     setBookings(prev => prev.filter(b => b.id !== id))
   }

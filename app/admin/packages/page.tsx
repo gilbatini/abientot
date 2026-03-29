@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import { Plus, Pencil, Trash2, X, Loader2, Check, Globe } from 'lucide-react'
-import { getAdminSupabase } from '@/lib/supabase-admin'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 import type { Package } from '@/lib/supabase'
 
 const EMPTY_FORM: Omit<Package, 'id' | 'created_at'> = {
@@ -37,7 +42,6 @@ export default function PackagesPage() {
 
   async function fetchPackages() {
     setLoading(true)
-    const supabase = getAdminSupabase()
     const { data, error } = await supabase
       .from('packages')
       .select('*')
@@ -98,7 +102,6 @@ export default function PackagesPage() {
     }
 
     setSaving(true)
-    const supabase = getAdminSupabase()
 
     const payload: Omit<Package, 'id' | 'created_at'> = {
       ...formData,
@@ -128,14 +131,12 @@ export default function PackagesPage() {
 
   async function deletePackage(id: string) {
     if (!window.confirm('Delete this package? This cannot be undone.')) return
-    const supabase = getAdminSupabase()
     await supabase.from('packages').delete().eq('id', id)
     setPackages(prev => prev.filter(p => p.id !== id))
     if (editingId === id) cancelForm()
   }
 
   async function togglePublished(pkg: Package) {
-    const supabase = getAdminSupabase()
     const newVal = !pkg.published
     await supabase.from('packages').update({ published: newVal }).eq('id', pkg.id!)
     setPackages(prev => prev.map(p => p.id === pkg.id ? { ...p, published: newVal } : p))

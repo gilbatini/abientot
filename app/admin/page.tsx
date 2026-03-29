@@ -2,8 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { Calendar, Inbox, Package, TrendingUp } from 'lucide-react'
-import { getAdminSupabase } from '@/lib/supabase-admin'
+import { createClient } from '@supabase/supabase-js'
 import type { BookingInquiry, ContactMessage } from '@/lib/supabase'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 
 type Stats = {
   totalBookings:  number
@@ -30,9 +35,10 @@ export default function AdminDashboard() {
   const [loading,         setLoading]         = useState(true)
 
   useEffect(() => {
-    const supabase = getAdminSupabase()
-
     async function fetchData() {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { window.location.href = '/admin/login'; return }
+
       const [
         { count: totalBookings },
         { count: newBookings },

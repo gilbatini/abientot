@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import { ChevronDown, ChevronUp, Trash2 } from 'lucide-react'
-import { getAdminSupabase } from '@/lib/supabase-admin'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 import type { ContactMessage } from '@/lib/supabase'
 
 function formatDate(iso: string) {
@@ -18,7 +23,6 @@ export default function MessagesPage() {
 
   async function fetchMessages() {
     setLoading(true)
-    const supabase = getAdminSupabase()
     const { data, error } = await supabase
       .from('contact_messages')
       .select('*')
@@ -29,7 +33,6 @@ export default function MessagesPage() {
 
   async function deleteMessage(id: string) {
     if (!window.confirm('Delete this message? This cannot be undone.')) return
-    const supabase = getAdminSupabase()
     await supabase.from('contact_messages').delete().eq('id', id)
     setMessages(prev => prev.filter(m => m.id !== id))
   }
