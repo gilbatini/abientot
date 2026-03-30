@@ -50,7 +50,7 @@ export const DESTINATIONS = [
   { name: 'Murchison Falls',     country: 'Uganda', tag: 'Wildlife Safari',      nights: '2–4', image: 'https://abientot-nextjs.vercel.app/images/gallery-2.jpg' },
   { name: 'Queen Elizabeth NP',  country: 'Uganda', tag: 'Big Five',             nights: '2–3', image: 'https://abientot-nextjs.vercel.app/images/gallery-3.jpg' },
   { name: 'Lake Bunyonyi',       country: 'Uganda', tag: 'Relaxation',           nights: '1–2', image: 'https://abientot-nextjs.vercel.app/images/gallery-4.jpg' },
-  { name: 'Kidepo Valley',       country: 'Uganda', tag: 'Off the Beaten Path',  nights: '3–4', image: 'https://abientot-nextjs.vercel.app/images/gallery-5.jpg' },
+  { name: 'Kidepo Valley',       country: 'Uganda', tag: 'Off the Beaten Path',  nights: '3–4', image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80' },
 ]
 
 export const SERVICES = [
