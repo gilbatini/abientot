@@ -10,22 +10,53 @@ export const metadata: Metadata = {
 
 const TEAM = [
   {
-    name: 'David Mugisha',
-    role: 'Founder & Lead Guide',
-    bio: 'Born and raised in Kampala, David has spent 20 years exploring every corner of Uganda. His passion for conservation drives every itinerary we build.',
-    initial: 'D',
+    name: 'Faridah Sebbowa',
+    role: 'CEO',
+    bio: "Faridah leads À Bientôt Tour & Travels with a passion for delivering world-class safari experiences. Her vision drives the company's commitment to excellence and sustainable tourism across East Africa.",
+    initial: 'F',
+    photo: '/Team/imgi_6_ridah.jpg',
   },
   {
-    name: 'Grace Nakato',
-    role: 'Safari Operations Manager',
-    bio: 'Grace coordinates logistics for every tour with precision. She ensures that from airport pickup to final farewell, nothing is left to chance.',
-    initial: 'G',
+    name: 'Ramlah Nampenja',
+    role: 'Executive Director',
+    bio: 'Ramlah oversees operations and strategic growth at À Bientôt. Her dedication to client satisfaction and deep knowledge of the African travel landscape make every journey exceptional.',
+    initial: 'R',
+    photo: '/Team/imgi_6_ram_edited.jpg',
   },
   {
-    name: 'Samuel Okello',
-    role: 'Senior Wildlife Guide',
-    bio: "With 12+ years in Uganda's national parks, Samuel's expertise in primate behaviour makes gorilla treks truly extraordinary experiences.",
+    name: 'Moses Eriyau',
+    role: 'Director',
+    bio: 'Moses brings extensive experience in African tourism and business development. He plays a key role in forging partnerships and expanding the company\'s reach across the continent.',
+    initial: 'M',
+    photo: '/Team/imgi_6_moz.jpg',
+  },
+  {
+    name: 'Caroline Apidi',
+    role: 'Director of Finance',
+    bio: 'Caroline manages the financial operations of À Bientôt with precision and integrity. Her expertise ensures every client gets outstanding value on their safari investment.',
+    initial: 'C',
+    photo: '/Team/imgi_6_caro_edited.jpg',
+  },
+  {
+    name: 'Kayondo Twaha',
+    role: 'Director',
+    bio: "Twaha contributes strategic leadership and a deep passion for Uganda's natural wonders. He helps shape the company's direction and ensures our safaris remain truly authentic.",
+    initial: 'K',
+    photo: '/Team/imgi_6_twaha_edited.jpg',
+  },
+  {
+    name: 'Sserugo Mathias',
+    role: 'Administrator',
+    bio: 'Mathias keeps the day-to-day operations of À Bientôt running smoothly. His attention to detail and organisational skills ensure every tour is flawlessly coordinated.',
     initial: 'S',
+    photo: '/Team/imgi_6_mat_edited.jpg',
+  },
+  {
+    name: 'Remmy Ssekanjako',
+    role: 'Director of IT',
+    bio: 'Remmy drives the technology vision at À Bientôt, ensuring our digital platforms deliver seamless experiences for clients booking their dream African safaris.',
+    initial: 'R',
+    photo: '/Team/imgi_6_remmy.jpg',
   },
 ]
 
@@ -177,12 +208,21 @@ export default function AboutPage() {
           <h2 className="sec-title text-[clamp(32px,3.5vw,52px)]">Meet Our <span className="text-gradient-teal">Experts</span></h2>
           <p className="sec-subtitle mx-auto">Our guides are not just knowledgeable — they are passionate storytellers who bring Africa to life.</p>
         </div>
-        <div className="grid grid-cols-3 gap-8 max-lg:grid-cols-2 max-md:grid-cols-1 max-w-4xl mx-auto">
+        <div className="grid grid-cols-4 gap-8 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-w-6xl mx-auto">
           {TEAM.map(member => (
             <div key={member.name} className="card p-8 text-center">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-brand-teal to-[#239e97] flex items-center justify-center font-display text-4xl font-light text-white mx-auto mb-5">
-                {member.initial}
-              </div>
+              {member.photo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-20 h-20 rounded-full object-cover object-top mx-auto mb-5 ring-2 ring-brand-teal/20"
+                />
+              ) : (
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-brand-teal to-[#239e97] flex items-center justify-center font-display text-4xl font-light text-white mx-auto mb-5">
+                  {member.initial}
+                </div>
+              )}
               <h3 className="font-display text-[20px] font-light text-brand-dark">{member.name}</h3>
               <p className="font-caps text-[8.5px] tracking-[0.2em] uppercase text-brand-teal mt-1 mb-4">{member.role}</p>
               <p className="font-body text-[13.5px] leading-[1.85] text-[#4A6741]">{member.bio}</p>
