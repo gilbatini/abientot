@@ -8,7 +8,7 @@ import { BRAND } from '@/lib/constants'
 const SLIDES = [
   { src: 'https://static.wixstatic.com/media/5d0656_b447524383114eeaa1af7cfafeed4c2f~mv2.jpg', alt: 'African Lioness' },
   { src: 'https://static.wixstatic.com/media/5d0656_c8d282174a78403691da00270a9a3791~mv2.jpg', alt: 'Savannah Horizon' },
-  { src: 'https://static.wixstatic.com/media/5d0656_df51476dafca44cbabdb22c4ae090b04~mv2.jpg', alt: 'Silverback Gorilla' },
+  { src: 'https://images.unsplash.com/photo-1772308549101-07bd3b04c71c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Holiday by the Water' },
 ]
 
 export default function Hero() {
