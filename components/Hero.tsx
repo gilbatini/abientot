@@ -32,7 +32,7 @@ export default function Hero() {
 
       {/* Overlay */}
       <div className="absolute inset-0 z-[2]" style={{
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 8%, rgba(10,26,10,0.15) 25%, rgba(10,26,10,0.35) 55%, rgba(10,26,10,0.97) 100%)'
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 30%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.92) 100%)'
       }} />
 
       {/* Content */}
@@ -49,21 +49,21 @@ export default function Hero() {
           </div>
 
           {/* H1 */}
-          <h1 className="font-display font-light leading-[0.92] tracking-[-0.02em] mb-6" style={{fontSize:'clamp(64px,9vw,130px)'}}>
-            <span className="block text-white/92 font-light">Your Next</span>
+          <h1 className="font-display font-light leading-[0.92] tracking-[-0.02em] mb-6" style={{fontSize:'clamp(64px,9vw,130px)', textShadow: '0 2px 24px rgba(0,0,0,0.6)'}}>
+            <span className="block text-white font-light">Your Next</span>
             <span className="block italic font-normal" style={{
               background:'linear-gradient(135deg, #e8d5b7, #f0c060, #d4a843)',
               WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text'
             }}>
               Adventure
             </span>
-            <span className="block font-caps text-white/40 not-italic" style={{fontSize:'0.22em', letterSpacing:'0.3em', marginTop:'16px'}}>
+            <span className="block font-caps text-white/60 not-italic" style={{fontSize:'0.22em', letterSpacing:'0.3em', marginTop:'16px'}}>
               Crafted for those who dare to explore
             </span>
           </h1>
 
           {/* Description */}
-          <p className="font-body text-[15px] font-light leading-[1.9] text-white/58 max-w-[500px] mb-11">
+          <p className="font-body text-[15px] font-light leading-[1.9] text-white/75 max-w-[500px] mb-11">
             From <strong className="text-white/88 font-medium">gorilla trekking in Bwindi</strong> to thundering Murchison Falls —
             À Bientôt curates extraordinary journeys across Uganda and the world, tailored to every traveller.
           </p>
