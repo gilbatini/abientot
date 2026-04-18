@@ -23,43 +23,45 @@ const SERVICE_IMAGES: Record<string, string> = {
 
 export default function Services() {
   return (
-    <section className="bg-[#0a1a0a]" id="services">
+    <section className="bg-[#F5F0E8]" id="services">
       {/* Section header */}
       <div className="px-16 pt-32 pb-16 max-lg:px-8 max-md:px-6">
         <div className="flex items-center gap-3 mb-3">
           <div className="w-7 h-px bg-brand-gold" />
           <span className="font-caps text-[9px] font-medium tracking-[0.26em] uppercase text-brand-gold">Our Services</span>
         </div>
-        <h2 className="font-display text-[clamp(40px,4.5vw,68px)] font-light leading-[1.06] tracking-[-0.01em] text-white mb-4">
+        <div className="w-16 h-px bg-brand-gold mb-5" />
+        <h2 className="font-display text-[clamp(40px,4.5vw,68px)] font-light leading-[1.06] tracking-[-0.01em] text-brand-dark mb-4">
           Everything You Need,<br /><span className="text-gradient-teal">All in One Place</span>
         </h2>
-        <p className="font-body text-[15px] font-light leading-[1.85] text-white/50 max-w-xl">
+        <p className="font-body text-[15px] font-light leading-[1.85] text-[#5A7751] max-w-xl">
           From luxury lodges to thrilling wildlife encounters, we handle every detail of your African adventure.
         </p>
       </div>
 
       {/* Alternating full-width rows */}
-      <div className="divide-y divide-white/6">
+      <div className="divide-y divide-[#E2D9CC]">
         {SERVICES.map((svc, index) => {
           const imageLeft = index % 2 !== 0
+          const isLight = index % 2 === 0
 
           const textCol = (
             <div
               key="text"
-              className={`bg-[#111f11] flex flex-col justify-center px-12 lg:px-16 py-16 max-md:px-8 max-md:py-12 ${imageLeft ? 'lg:order-2' : 'lg:order-1'}`}
+              className={`flex flex-col justify-center px-12 lg:px-16 py-16 max-md:px-8 max-md:py-12 ${imageLeft ? 'lg:order-2' : 'lg:order-1'} ${isLight ? 'bg-[#FAFAF7]' : 'bg-[#0d1a0d]'}`}
             >
-              <div className="w-14 h-14 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-8">
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-brand-gold mb-8 ${isLight ? 'bg-brand-gold/10' : 'bg-brand-gold/10'}`}>
                 {ICONS[svc.icon]}
               </div>
-              <h3 className="font-display text-[clamp(28px,3vw,40px)] font-light text-white leading-tight mb-4">
+              <h3 className={`font-display text-[clamp(28px,3vw,40px)] font-light leading-tight mb-4 ${isLight ? 'text-brand-dark' : 'text-white'}`}>
                 {svc.title}
               </h3>
-              <p className="font-body text-[15px] leading-[1.85] text-white/60 mb-6 max-w-[480px]">
+              <p className={`font-body text-[15px] leading-[1.85] mb-6 max-w-[480px] ${isLight ? 'text-[#5A7751]' : 'text-white/60'}`}>
                 {svc.desc}
               </p>
               <ul className="flex flex-col gap-2.5 mb-8">
                 {svc.features.map((f) => (
-                  <li key={f} className="flex items-center gap-3 font-body text-[13px] text-white/55">
+                  <li key={f} className={`flex items-center gap-3 font-body text-[13px] ${isLight ? 'text-[#4A6741]' : 'text-white/55'}`}>
                     <span className="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0" />
                     {f}
                   </li>
@@ -67,7 +69,7 @@ export default function Services() {
               </ul>
               <Link
                 href={svc.href}
-                className="inline-flex items-center gap-2 font-caps text-[9px] tracking-[0.2em] uppercase text-brand-gold/60 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-brand-gold hover:gap-3 w-fit"
+                className={`inline-flex items-center gap-2 font-caps text-[9px] tracking-[0.2em] uppercase transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:gap-3 w-fit ${isLight ? 'text-brand-teal/70 hover:text-brand-teal' : 'text-brand-gold/60 hover:text-brand-gold'}`}
               >
                 Learn more <ArrowRight className="w-3 h-3" strokeWidth={1.5} />
               </Link>

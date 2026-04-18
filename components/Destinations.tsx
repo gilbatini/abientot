@@ -4,7 +4,7 @@ import { DESTINATIONS } from '@/lib/constants'
 
 export default function Destinations() {
   return (
-    <section className="px-16 py-32 bg-[#0a1a0a] max-lg:px-8 max-md:px-6" id="destinations">
+    <section className="px-16 py-32 bg-white max-lg:px-8 max-md:px-6" id="destinations">
       {/* Header */}
       <div className="flex items-end justify-between mb-14 flex-wrap gap-5">
         <div>
@@ -12,7 +12,8 @@ export default function Destinations() {
             <div className="w-7 h-px bg-brand-gold" />
             <span className="font-caps text-[9px] font-medium tracking-[0.26em] uppercase text-brand-gold">Destinations</span>
           </div>
-          <h2 className="font-display text-[clamp(40px,4.5vw,68px)] font-light leading-[1.06] tracking-[-0.01em] mb-0 text-white">
+          <div className="w-16 h-px bg-brand-gold mb-5" />
+          <h2 className="font-display text-[clamp(40px,4.5vw,68px)] font-light leading-[1.06] tracking-[-0.01em] mb-0 text-brand-dark">
             Discover <span className="text-gradient-teal">Uganda</span><br />& Beyond
           </h2>
         </div>
@@ -70,7 +71,7 @@ export default function Destinations() {
             {/* Hover reveal panel */}
             <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
               <div
-                className="px-5 pb-6 pt-16"
+                className="px-5 pb-6 pt-16 backdrop-blur-sm"
                 style={{ background: 'linear-gradient(to top, rgba(26,10,0,0.95) 0%, rgba(26,10,0,0.75) 60%, transparent 100%)' }}
               >
                 <span className="inline-block font-caps text-[8px] tracking-[0.22em] uppercase text-brand-gold border border-brand-gold/30 bg-brand-gold/15 rounded-full px-2.5 py-1 mb-3">

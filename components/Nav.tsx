@@ -32,8 +32,8 @@ export default function Nav() {
         <div className={cn(
           'flex items-center justify-between w-full h-full px-6 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]',
           scrolled
-            ? 'bg-[#0a1a0a]/95 backdrop-blur-lg rounded-2xl shadow-lg shadow-black/30 ring-1 ring-white/8 border-b border-white/8 px-5'
-            : 'bg-black/30 backdrop-blur-md'
+            ? 'bg-[#0a1a0a]/90 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-white/8 px-5'
+            : 'bg-white/5 backdrop-blur-lg border-b border-white/10'
         )}>
 
           {/* Logo */}

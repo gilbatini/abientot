@@ -9,6 +9,8 @@ const SLIDES = [
   { src: '/images/sunset-slide.jpeg',                                             alt: 'Tropical Island Escape' },
   { src: '/images/airport_pickup.jpg',                                            alt: 'Premium Airport Transfers' },
   { src: '/images/businessman-in-business-class-having-inflight-meal-768.jpeg',  alt: 'Business Class Travel' },
+  { src: '/images/zebra-slide.jpg',                                               alt: 'Zebras on the Savannah' },
+  { src: '/images/ostrich-slide.jpg',                                             alt: 'Ostrich in the Wild' },
 ]
 
 const ease = 'cubic-bezier(0.16, 1, 0.3, 1)'
@@ -55,7 +57,7 @@ export default function Hero() {
 
           {/* Badge */}
           <div
-            className="inline-flex items-center gap-2.5 bg-white/10 border border-white/25 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6"
+            className="inline-flex items-center gap-2.5 bg-white/15 backdrop-blur-sm border border-white/25 shadow-[0_4px_16px_rgba(0,0,0,0.15)] rounded-full px-4 py-1.5 mb-6"
             style={fadeUp('0.05s')}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shadow-[0_0_12px_#D4A843] animate-pulse" />
@@ -119,7 +121,7 @@ export default function Hero() {
           {BRAND.stats.map((stat) => (
             <div
               key={stat.label}
-              className="bg-white/8 border border-white/12 backdrop-blur-md rounded-2xl px-5 py-4 transition-all duration-300 hover:bg-white/12 hover:border-white/20"
+              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-all duration-300 hover:bg-white/14 hover:border-white/25"
             >
               <span className="block font-display text-[42px] font-light text-brand-gold leading-none tracking-[-0.02em]">
                 {stat.value}{stat.star && <span className="text-brand-gold text-2xl ml-1">★</span>}
