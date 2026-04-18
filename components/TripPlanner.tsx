@@ -57,7 +57,7 @@ export default function TripPlanner() {
             {STEPS.map((step, i) => (
               <div key={step.num} className="flex items-center">
                 <div className="flex items-center gap-3.5 bg-white/8 border border-white/15 backdrop-blur-sm rounded-xl px-6 py-4">
-                  <div className="w-9 h-9 rounded-full bg-brand-gold flex items-center justify-center font-caps text-[10px] font-semibold tracking-[0.05em] text-[#0a1a0a] flex-shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-brand-gold flex items-center justify-center font-caps text-[10px] font-semibold tracking-[0.05em] text-[#0a0f1a] flex-shrink-0">
                     {step.num}
                   </div>
                   <div className="text-left">
@@ -76,7 +76,7 @@ export default function TripPlanner() {
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2.5 font-caps text-[10px] font-bold tracking-[0.2em] uppercase bg-brand-gold text-[#0a1a0a] px-8 py-4 rounded-lg transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand-gold/90 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2.5 font-caps text-[10px] font-bold tracking-[0.2em] uppercase bg-brand-gold text-[#0a0f1a] px-8 py-4 rounded-lg transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand-gold/90 hover:-translate-y-0.5"
             >
               Get a Free Quote <ArrowRight className="w-4 h-4" strokeWidth={2} />
             </Link>

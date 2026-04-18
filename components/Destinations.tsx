@@ -39,7 +39,7 @@ export default function Destinations() {
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.06]"
               style={{
                 backgroundImage: `url('${dest.image}')`,
-                backgroundColor: '#1B4332',
+                backgroundColor: '#1a2540',
                 filter: 'saturate(1.15) contrast(1.08)',
               }}
             />
@@ -86,7 +86,7 @@ export default function Destinations() {
                 <p className="font-caps text-[8px] tracking-[0.2em] uppercase text-brand-gold/50 mb-4">
                   {dest.country} · {dest.nights} nights
                 </p>
-                <span className="inline-flex items-center gap-2 font-caps text-[9px] tracking-[0.18em] uppercase text-[#0a1a0a] bg-brand-gold px-4 py-2 rounded-lg transition-all duration-200 hover:bg-brand-gold/90">
+                <span className="inline-flex items-center gap-2 font-caps text-[9px] tracking-[0.18em] uppercase text-[#0a0f1a] bg-brand-gold px-4 py-2 rounded-lg transition-all duration-200 hover:bg-brand-gold/90">
                   Explore <ArrowRight className="w-3 h-3" strokeWidth={1.5} />
                 </span>
               </div>

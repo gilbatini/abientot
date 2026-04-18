@@ -12,7 +12,7 @@ export default function PrivacyPage() {
     <div className="bg-brand-cream min-h-screen">
 
       {/* Hero */}
-      <section className="bg-[#1A2E1A] pt-40 pb-20 px-6 text-center">
+      <section className="bg-[#1a2540] pt-40 pb-20 px-6 text-center">
         <div className="max-w-2xl mx-auto">
           <div className="eyebrow justify-center mb-4">
             <div className="eyebrow-bar" />

@@ -51,7 +51,7 @@ export default function Testimonials() {
               &ldquo;{featured.text}&rdquo;
             </blockquote>
             <div className="flex items-center gap-4 pt-6 border-t border-[#E2D9CC]">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-gold/80 to-brand-gold/50 flex items-center justify-center font-display text-xl text-[#0a1a0a] font-medium flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-gold/80 to-brand-gold/50 flex items-center justify-center font-display text-xl text-[#0a0f1a] font-medium flex-shrink-0">
                 {featured.avatar}
               </div>
               <div>
@@ -85,7 +85,7 @@ export default function Testimonials() {
                   &ldquo;{t.text}&rdquo;
                 </blockquote>
                 <div className="flex items-center gap-3 pt-5 border-t border-[#E2D9CC]/70">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-gold/70 to-brand-gold/40 flex items-center justify-center font-display text-lg text-[#0a1a0a] font-medium flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-gold/70 to-brand-gold/40 flex items-center justify-center font-display text-lg text-[#0a0f1a] font-medium flex-shrink-0">
                     {t.avatar}
                   </div>
                   <div>
@@ -113,7 +113,7 @@ export default function Testimonials() {
         </div>
         <Link
           href="/contact"
-          className="inline-flex items-center gap-2.5 font-caps text-[10px] font-bold tracking-[0.2em] uppercase bg-brand-gold text-[#0a1a0a] px-8 py-4 rounded-lg transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand-gold/90 hover:-translate-y-0.5 flex-shrink-0"
+          className="inline-flex items-center gap-2.5 font-caps text-[10px] font-bold tracking-[0.2em] uppercase bg-brand-gold text-[#0a0f1a] px-8 py-4 rounded-lg transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand-gold/90 hover:-translate-y-0.5 flex-shrink-0"
         >
           Start Planning <ArrowRight className="w-4 h-4" strokeWidth={2} />
         </Link>

@@ -48,7 +48,7 @@ export default function Services() {
           const textCol = (
             <div
               key="text"
-              className={`flex flex-col justify-center px-12 lg:px-16 py-16 max-md:px-8 max-md:py-12 ${imageLeft ? 'lg:order-2' : 'lg:order-1'} ${isLight ? 'bg-[#FAFAF7]' : 'bg-[#0d1a0d]'}`}
+              className={`flex flex-col justify-center px-12 lg:px-16 py-16 max-md:px-8 max-md:py-12 ${imageLeft ? 'lg:order-2' : 'lg:order-1'} ${isLight ? 'bg-[#FAFAF7]' : 'bg-[#0d1220]'}`}
             >
               <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-brand-gold mb-8 ${isLight ? 'bg-brand-gold/10' : 'bg-brand-gold/10'}`}>
                 {ICONS[svc.icon]}

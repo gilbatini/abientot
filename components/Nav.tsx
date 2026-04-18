@@ -32,7 +32,7 @@ export default function Nav() {
         <div className={cn(
           'flex items-center justify-between w-full h-full px-6 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]',
           scrolled
-            ? 'bg-[#0a1a0a]/90 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-white/8 px-5'
+            ? 'bg-[#0a0f1a]/90 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-white/8 px-5'
             : 'bg-white/5 backdrop-blur-lg border-b border-white/10'
         )}>
 

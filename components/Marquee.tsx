@@ -2,7 +2,7 @@ const ITEMS = ['Bwindi Forest', 'Murchison Falls', 'Queen Elizabeth NP', 'Lake B
 
 export default function Marquee() {
   return (
-    <div className="bg-[#0a1a0a] border-y border-white/8 py-4 overflow-hidden">
+    <div className="bg-[#0a0f1a] border-y border-white/8 py-4 overflow-hidden">
       <div className="flex animate-[marquee_30s_linear_infinite] whitespace-nowrap">
         {[...ITEMS, ...ITEMS].map((item, i) => (
           <span key={i} className="inline-flex items-center gap-4 mx-8 font-caps text-[10px] font-medium tracking-[0.22em] uppercase text-white/40">

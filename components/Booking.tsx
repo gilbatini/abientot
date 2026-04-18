@@ -44,7 +44,7 @@ export default function Booking() {
   }
 
   return (
-    <section className="px-16 py-32 bg-[#0d1a0d] max-lg:px-8 max-md:px-6" id="book">
+    <section className="px-16 py-32 bg-[#0d1220] max-lg:px-8 max-md:px-6" id="book">
       <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-10">
 
         {/* Left copy */}
@@ -113,9 +113,9 @@ export default function Booking() {
                   className={inputCls}
                   style={{ colorScheme: 'dark' }}
                 >
-                  <option value="" className="bg-[#0d1a0d] text-white/50">Select destination…</option>
+                  <option value="" className="bg-[#0d1220] text-white/50">Select destination…</option>
                   {DESTINATIONS.map(d => (
-                    <option key={d} value={d} className="bg-[#0d1a0d] text-white">{d}</option>
+                    <option key={d} value={d} className="bg-[#0d1220] text-white">{d}</option>
                   ))}
                 </select>
               </div>
@@ -143,7 +143,7 @@ export default function Booking() {
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex items-center justify-center gap-2.5 font-caps text-[10px] font-bold tracking-[0.2em] uppercase bg-brand-gold text-[#0a1a0a] px-8 py-4 rounded-lg mt-1 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand-gold/90 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex items-center justify-center gap-2.5 font-caps text-[10px] font-bold tracking-[0.2em] uppercase bg-brand-gold text-[#0a0f1a] px-8 py-4 rounded-lg mt-1 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand-gold/90 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ArrowRight className="w-4 h-4" strokeWidth={2} /> Request My Quote</>}
               </button>
