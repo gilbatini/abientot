@@ -130,7 +130,7 @@ export const BLOG_POSTS = [
     cat:     'Safaris',
     date:    'Dec 15, 2024',
     read:    '8 min read',
-    image:   'https://abientot-nextjs.vercel.app/images/blog-1.jpg',
+    image:   'https://images.unsplash.com/photo-1516026672322-bc52d61a4d2d?w=800',
   },
   {
     slug:    'silverback-gorillas-uganda',
@@ -139,7 +139,7 @@ export const BLOG_POSTS = [
     cat:     'Wildlife',
     date:    'Nov 28, 2024',
     read:    '10 min read',
-    image:   'https://abientot-nextjs.vercel.app/images/blog-2.jpg',
+    image:   'https://images.unsplash.com/photo-1549366021-9f761d450615?w=800',
   },
   {
     slug:    'enchanting-wonders-uganda',
@@ -148,6 +148,6 @@ export const BLOG_POSTS = [
     cat:     'Destinations',
     date:    'Oct 20, 2024',
     read:    '12 min read',
-    image:   'https://abientot-nextjs.vercel.app/images/blog-3.jpg',
+    image:   'https://images.unsplash.com/photo-1612178537253-bccd437b730e?w=800',
   },
 ]

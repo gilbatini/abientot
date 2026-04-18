@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { ChevronDown, X, ChevronRight } from 'lucide-react'
+import { ChevronDown, X, ChevronRight, Phone } from 'lucide-react'
 import { NAV_LINKS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 export default function Nav() {
-  const [scrolled, setScrolled]   = useState(false)
-  const [mobileOpen, setMobile]   = useState(false)
-  const [openSub, setOpenSub]     = useState<string | null>(null)
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobile] = useState(false)
+  const [openSub, setOpenSub]   = useState<string | null>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => setScrolled(window.scrollY > 80)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -27,67 +27,50 @@ export default function Nav() {
       {/* ── Main Nav ── */}
       <nav className={cn(
         'fixed left-0 right-0 z-50 flex items-center justify-between transition-all duration-300',
-        scrolled
-          ? 'top-2 px-3 h-14'
-          : 'top-0 px-8 h-[68px]'
+        scrolled ? 'top-2 px-3 h-14' : 'top-0 px-8 h-[68px]'
       )}>
         <div className={cn(
-          'flex items-center justify-between w-full h-full px-6 transition-all duration-300',
+          'flex items-center justify-between w-full h-full px-6 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]',
           scrolled
-            ? 'bg-white/95 backdrop-blur-xl rounded-2xl shadow-lg shadow-black/5 ring-1 ring-white/70 px-5'
-            : 'bg-transparent'
+            ? 'bg-[#0a1a0a]/95 backdrop-blur-lg rounded-2xl shadow-lg shadow-black/30 ring-1 ring-white/8 border-b border-white/8 px-5'
+            : 'bg-black/30 backdrop-blur-md'
         )}>
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-            <div className={cn(
-              'w-10 h-10 flex-shrink-0 transition-all duration-300',
-              scrolled ? '' : '[filter:brightness(0)_invert(1)]'
-            )}>
+            <div className="w-10 h-10 flex-shrink-0 [filter:brightness(0)_invert(1)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo.svg" alt="À Bientôt" width={40} height={40} />
             </div>
             <div className="flex flex-col">
-              <span className={cn(
-                'font-caps text-[14px] font-semibold tracking-[0.1em] uppercase leading-tight transition-colors duration-300',
-                scrolled ? 'text-brand-dark' : 'text-white'
-              )}>
-                À <span className={scrolled ? 'text-brand-teal' : 'text-yellow-200'}>Bientôt</span>
+              <span className="font-caps text-[14px] font-semibold tracking-[0.1em] uppercase leading-tight text-white">
+                À <span className="text-brand-teal">Bientôt</span>
               </span>
-              <span className={cn(
-                'font-body text-[7.5px] tracking-[0.2em] uppercase transition-colors duration-300 mt-0.5',
-                scrolled ? 'text-[#8FA88A]' : 'text-white/45'
-              )}>
+              <span className="font-body text-[7.5px] tracking-[0.2em] uppercase mt-0.5 text-white/45">
                 Tours & Travels · Uganda
               </span>
             </div>
           </Link>
 
           {/* Desktop links */}
-          <ul className="hidden lg:flex items-center gap-1 list-none">
+          <ul className="hidden lg:flex items-center gap-0.5 list-none">
             {NAV_LINKS.map((link) => (
               <li key={link.label} className="relative group">
                 <Link
                   href={link.href}
-                  className={cn(
-                    'flex items-center gap-1 font-caps text-[10px] font-medium tracking-[0.14em] uppercase px-3 py-2 rounded-lg transition-all duration-200',
-                    scrolled
-                      ? 'text-[#4A6741] hover:text-brand-teal hover:bg-brand-teal/5'
-                      : 'text-white/88 hover:text-white hover:bg-white/10'
-                  )}
+                  className="flex items-center gap-1 font-caps text-[11px] font-medium tracking-[0.18em] uppercase px-3.5 py-2 rounded-lg text-white transition-colors duration-200 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-brand-gold"
                 >
                   {link.label}
                   {link.children && (
-                    <ChevronDown className="w-2.5 h-2.5 opacity-50 transition-transform duration-200 group-hover:rotate-180" />
+                    <ChevronDown className="w-2.5 h-2.5 opacity-50 transition-transform duration-200 group-hover:rotate-180" strokeWidth={1.5} />
                   )}
                 </Link>
 
                 {/* Dropdown */}
                 {link.children && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 translate-y-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 pt-3 min-w-[210px] z-50">
-                    <div className="bg-white rounded-2xl border border-black/5 shadow-2xl p-2.5">
-                      {/* Arrow */}
-                      <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-3 h-1.5 bg-white" style={{clipPath:'polygon(50% 0%, 0% 100%, 100% 100%)'}} />
+                    <div className="bg-white rounded-2xl border border-black/5 shadow-[0_20px_48px_-12px_rgba(0,0,0,0.15)] p-2.5">
+                      <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-3 h-1.5 bg-white" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
                       {link.children.map((child) => (
                         <Link
                           key={child.label}
@@ -95,7 +78,7 @@ export default function Nav() {
                           className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#4A6741] hover:text-brand-teal hover:bg-brand-teal/5 transition-all duration-150 group/item"
                         >
                           <span className="w-7 h-7 rounded-lg bg-brand-teal/8 flex items-center justify-center flex-shrink-0 group-hover/item:bg-brand-teal/14 transition-colors">
-                            <ChevronRight className="w-3.5 h-3.5 text-brand-teal" />
+                            <ChevronRight className="w-3.5 h-3.5 text-brand-teal" strokeWidth={1.5} />
                           </span>
                           <span className="flex flex-col gap-0.5">
                             <span className="text-[13px] font-medium leading-none">{child.label}</span>
@@ -110,10 +93,10 @@ export default function Nav() {
             ))}
 
             {/* Book Now CTA */}
-            <li className="ml-2">
+            <li className="ml-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-1.5 font-caps text-[10px] font-semibold tracking-[0.18em] uppercase bg-brand-teal text-white px-5 py-2.5 rounded-xl shadow-lg shadow-brand-teal/25 hover:bg-brand-teal-mid hover:-translate-y-0.5 transition-all duration-200"
+                className="inline-flex items-center gap-1.5 font-caps text-[11px] font-semibold tracking-[0.15em] uppercase bg-brand-teal text-white px-5 py-2.5 rounded-full shadow-lg shadow-brand-teal/20 hover:bg-brand-teal-mid hover:-translate-y-0.5 transition-all duration-200 ease-[cubic-bezier(0.32,0.72,0,1)]"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-white/50 animate-pulse" />
                 Book Now
@@ -124,17 +107,12 @@ export default function Nav() {
           {/* Burger */}
           <button
             onClick={() => setMobile(true)}
-            className={cn(
-              'lg:hidden flex flex-col items-center justify-center gap-[5px] w-10 h-10 rounded-xl transition-all duration-200 flex-shrink-0',
-              scrolled
-                ? 'bg-[#F5F0E8] border border-[#D8E8D0]'
-                : 'bg-white/10 border border-white/20'
-            )}
+            className="lg:hidden flex flex-col items-center justify-center gap-[5px] w-10 h-10 rounded-xl transition-all duration-200 flex-shrink-0 bg-white/10 border border-white/20"
             aria-label="Open menu"
           >
-            <span className={cn('block w-4.5 h-px rounded transition-colors', scrolled ? 'bg-brand-dark' : 'bg-white')} style={{width:'18px'}} />
-            <span className={cn('block h-px rounded transition-colors', scrolled ? 'bg-brand-dark' : 'bg-white')} style={{width:'13px'}} />
-            <span className={cn('block h-px rounded transition-colors', scrolled ? 'bg-brand-dark' : 'bg-white')} style={{width:'18px'}} />
+            <span className="block h-px rounded bg-white" style={{ width: '18px' }} />
+            <span className="block h-px rounded bg-white" style={{ width: '13px' }} />
+            <span className="block h-px rounded bg-white" style={{ width: '18px' }} />
           </button>
         </div>
       </nav>
@@ -163,7 +141,7 @@ export default function Nav() {
             onClick={() => setMobile(false)}
             className="w-9 h-9 rounded-xl bg-[#F5F0E8] flex items-center justify-center text-[#4A6741] hover:bg-[#D8E8D0] transition-colors"
           >
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4" strokeWidth={1.5} />
           </button>
         </div>
 
@@ -178,7 +156,7 @@ export default function Nav() {
                     className="flex items-center justify-between w-full py-4 font-display text-2xl font-light text-brand-dark hover:text-brand-teal transition-colors"
                   >
                     {link.label}
-                    <ChevronDown className={cn('w-4 h-4 text-[#8FA88A] transition-transform duration-300', openSub === link.label && 'rotate-180')} />
+                    <ChevronDown className={cn('w-4 h-4 text-[#8FA88A] transition-transform duration-300', openSub === link.label && 'rotate-180')} strokeWidth={1.5} />
                   </button>
                   {openSub === link.label && (
                     <div className="pb-3 pl-3 flex flex-col gap-1">
@@ -214,8 +192,12 @@ export default function Nav() {
           <Link href="/contact" onClick={() => setMobile(false)} className="btn-primary justify-center">
             Book Now
           </Link>
-          <a href="tel:+256788138721" className="flex items-center justify-center gap-2 text-[13px] font-medium text-[#4A6741] border border-[#D8E8D0] rounded-xl py-3 hover:border-brand-teal hover:text-brand-teal transition-all">
-            📞 +256 788 138 721
+          <a
+            href="tel:+256788138721"
+            className="flex items-center justify-center gap-2 text-[13px] font-medium text-[#4A6741] border border-[#D8E8D0] rounded-xl py-3 hover:border-brand-teal hover:text-brand-teal transition-all"
+          >
+            <Phone className="w-3.5 h-3.5" strokeWidth={1.5} />
+            +256 788 138 721
           </a>
         </div>
       </div>

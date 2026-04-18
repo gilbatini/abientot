@@ -16,7 +16,7 @@ export default function Testimonials() {
   const [featured, ...rest] = TESTIMONIALS
 
   return (
-    <section className="px-16 py-28 bg-[#FDFAF5] max-lg:px-8 max-md:px-6" id="testimonials">
+    <section className="px-16 py-32 bg-[#FDFAF5] max-lg:px-8 max-md:px-6" id="testimonials">
       <div className="mb-16">
         <div className="eyebrow"><div className="eyebrow-bar" /><span className="eyebrow-tag">Testimonials</span></div>
         <h2 className="sec-title">What Travellers<br /><span className="text-gradient-teal">Are Saying</span></h2>

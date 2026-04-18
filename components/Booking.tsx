@@ -46,7 +46,7 @@ export default function Booking() {
   }
 
   return (
-    <section className="px-16 py-24 bg-[#F5F0E8] max-lg:px-8 max-md:px-6" id="book">
+    <section className="px-16 py-32 bg-[#F0EDE6] max-lg:px-8 max-md:px-6" id="book">
       <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-10">
 
         {/* Left copy */}

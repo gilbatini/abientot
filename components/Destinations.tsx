@@ -4,7 +4,7 @@ import { DESTINATIONS } from '@/lib/constants'
 
 export default function Destinations() {
   return (
-    <section className="px-16 py-28 bg-[#FDFAF5] max-lg:px-8 max-md:px-6" id="destinations">
+    <section className="px-16 py-32 bg-[#FDFAF5] max-lg:px-8 max-md:px-6" id="destinations">
       <div className="flex items-end justify-between mb-16 flex-wrap gap-5">
         <div>
           <div className="eyebrow"><div className="eyebrow-bar" /><span className="eyebrow-tag">Destinations</span></div>
@@ -18,7 +18,7 @@ export default function Destinations() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-[2fr_1fr_1fr] grid-rows-2 gap-4 h-[580px] max-lg:grid-cols-2 max-md:grid-cols-1 max-md:h-auto max-md:gap-4">
+      <div className="grid grid-cols-[2fr_1fr_1fr] grid-rows-2 gap-4 h-[620px] max-lg:grid-cols-2 max-md:grid-cols-1 max-md:h-auto max-md:gap-4">
         {DESTINATIONS.map((dest, i) => (
           <Link
             key={dest.name}
@@ -26,18 +26,18 @@ export default function Destinations() {
             className={`relative overflow-hidden rounded-2xl cursor-pointer group block ${i === 0 ? 'row-span-2' : ''}`}
             style={{ minHeight: i !== 0 ? '200px' : undefined }}
           >
-            {/* Background image */}
+            {/* Background image — vivid, no dulling */}
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-108"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.07]"
               style={{
                 backgroundImage: `url('${dest.image}')`,
                 backgroundColor: '#1B4332',
-                transform: 'scale(1)',
+                filter: 'saturate(1.1) contrast(1.05)',
               }}
             />
 
             {/* Persistent gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent transition-opacity duration-500 group-hover:opacity-60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent transition-opacity duration-500 group-hover:opacity-50" />
 
             {/* Persistent info — fades out on hover */}
             <div className="absolute bottom-5 left-5 right-5 transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-0 group-hover:translate-y-2">
@@ -46,7 +46,7 @@ export default function Destinations() {
               </span>
               <h3
                 className="font-display font-light text-white leading-tight"
-                style={{ fontSize: i === 0 ? '38px' : '22px' }}
+                style={{ fontSize: i === 0 ? '44px' : '22px' }}
               >
                 {dest.name}
               </h3>
@@ -55,15 +55,18 @@ export default function Destinations() {
               </p>
             </div>
 
-            {/* Hover reveal panel — slides up from bottom */}
+            {/* Hover reveal panel — warm tint, slides up */}
             <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-              <div className="bg-gradient-to-t from-black/95 via-black/80 to-transparent px-5 pb-6 pt-16">
+              <div
+                className="px-5 pb-6 pt-16"
+                style={{ background: 'linear-gradient(to top, rgba(26,10,0,0.92) 0%, rgba(26,10,0,0.70) 60%, transparent 100%)' }}
+              >
                 <span className="inline-block font-caps text-[8px] tracking-[0.22em] uppercase text-brand-gold border border-brand-gold/30 bg-brand-gold/15 rounded-full px-2.5 py-1 mb-3">
                   {dest.tag}
                 </span>
                 <h3
                   className="font-display font-light text-white leading-tight mb-1"
-                  style={{ fontSize: i === 0 ? '36px' : '21px' }}
+                  style={{ fontSize: i === 0 ? '40px' : '21px' }}
                 >
                   {dest.name}
                 </h3>

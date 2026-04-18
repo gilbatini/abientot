@@ -6,26 +6,19 @@ import { ArrowRight } from 'lucide-react'
 import { BRAND } from '@/lib/constants'
 
 const SLIDES = [
-  { src: '/images/sunset-slide.jpeg', alt: 'Tropical Island Escape', caption: 'Sun, sea & coconuts — your perfect getaway' },
-  { src: '/images/airport_pickup.jpg', alt: 'Premium Airport Transfers', caption: 'Arrive in style — Mercedes S-Class from terminal to lodge' },
-  { src: '/images/businessman-in-business-class-having-inflight-meal-768.jpeg', alt: 'Business Class Travel', caption: 'First class comfort on every flight we book for you' },
+  { src: '/images/sunset-slide.jpeg',                                             alt: 'Tropical Island Escape' },
+  { src: '/images/airport_pickup.jpg',                                            alt: 'Premium Airport Transfers' },
+  { src: '/images/businessman-in-business-class-having-inflight-meal-768.jpeg',  alt: 'Business Class Travel' },
 ]
 
 const ease = 'cubic-bezier(0.16, 1, 0.3, 1)'
 
-function fadeUp(delay: string) {
+function fadeUp(delay: string): React.CSSProperties {
   return { animation: `fadeUpIn 1s ${ease} both ${delay}` }
 }
 
 export default function Hero() {
   const [slide, setSlide] = useState(0)
-  const [captionVisible, setCaptionVisible] = useState(true)
-
-  useEffect(() => {
-    setCaptionVisible(false)
-    const show = setTimeout(() => setCaptionVisible(true), 100)
-    return () => clearTimeout(show)
-  }, [slide])
 
   useEffect(() => {
     const t = setInterval(() => setSlide(s => (s + 1) % SLIDES.length), 7000)
@@ -44,9 +37,10 @@ export default function Hero() {
       ))}
 
       {/* Overlay */}
-      <div className="absolute inset-0 z-[2]" style={{
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.70) 20%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.60) 70%, rgba(0,0,0,0.93) 100%)'
-      }} />
+      <div
+        className="absolute inset-0 z-[2]"
+        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.40) 40%, rgba(0,0,0,0.65) 70%, rgba(0,0,0,0.95) 100%)' }}
+      />
 
       {/* Content */}
       <div className="relative z-10 w-full px-16 pb-24 pt-32 grid grid-cols-[1fr_220px] items-end gap-12 max-lg:grid-cols-1 max-lg:px-8 max-md:px-6 max-md:pb-16">
@@ -54,9 +48,10 @@ export default function Hero() {
         {/* Left */}
         <div className="relative">
           {/* Text backdrop */}
-          <div className="absolute inset-y-0 -left-16 -right-8 z-[-1] max-md:-left-6" style={{
-            background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, transparent 100%)'
-          }} />
+          <div
+            className="absolute inset-y-0 -left-16 -right-8 z-[-1] max-md:-left-6"
+            style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.50) 0%, transparent 100%)' }}
+          />
 
           {/* Badge */}
           <div
@@ -71,8 +66,8 @@ export default function Hero() {
 
           {/* H1 */}
           <h1
-            className="font-display font-light leading-[0.92] tracking-[-0.02em] mb-6"
-            style={{ fontSize: 'clamp(64px,9vw,130px)', textShadow: '0 2px 40px rgba(0,0,0,0.9), 0 4px 80px rgba(0,0,0,0.7)' }}
+            className="font-display font-light leading-[0.9] tracking-[-0.02em] mb-6"
+            style={{ fontSize: 'clamp(72px,10vw,140px)', textShadow: '0 2px 40px rgba(0,0,0,0.9), 0 4px 80px rgba(0,0,0,0.7)' }}
           >
             <span className="block text-white font-light" style={fadeUp('0.2s')}>
               Your Next
@@ -90,34 +85,28 @@ export default function Hero() {
               Adventure
             </span>
             <span
-              className="block font-caps text-white/60 not-italic"
-              style={{ ...fadeUp('0.5s'), fontSize: '0.22em', letterSpacing: '0.3em', marginTop: '16px' }}
+              className="block font-caps text-white/55 not-italic uppercase"
+              style={{ ...fadeUp('0.5s'), fontSize: '11px', letterSpacing: '0.28em', marginTop: '20px' }}
             >
               Crafted for those who dare to explore
-            </span>
-            <span
-              className={`block font-caps text-white/50 tracking-[0.2em] uppercase transition-opacity duration-700 ${captionVisible ? 'opacity-100' : 'opacity-0'}`}
-              style={{ fontSize: '0.16em', marginTop: '10px' }}
-            >
-              {SLIDES[slide].caption}
             </span>
           </h1>
 
           {/* Description */}
           <p
-            className="font-body text-[15px] font-light leading-[1.9] text-white/75 max-w-[500px] mb-11"
-            style={fadeUp('0.6s')}
+            className="font-body text-[15px] font-light text-white/70 max-w-[460px] mb-11"
+            style={{ ...fadeUp('0.6s'), lineHeight: 1.95 }}
           >
-            From <strong className="text-white/90 font-medium">gorilla trekking in Bwindi</strong> to serene{' '}
-            <strong className="text-white/90 font-medium">Lake Bunyonyi</strong> and thundering{' '}
-            <strong className="text-white/90 font-medium">Murchison Falls</strong> —
+            From <strong className="text-white/88 font-medium">gorilla trekking in Bwindi</strong> to serene{' '}
+            <strong className="text-white/88 font-medium">Lake Bunyonyi</strong> and thundering{' '}
+            <strong className="text-white/88 font-medium">Murchison Falls</strong> —
             À Bientôt curates extraordinary journeys across Uganda and the world, tailored to every traveller.
           </p>
 
           {/* CTAs */}
           <div className="flex items-center gap-4 flex-wrap" style={fadeUp('0.75s')}>
             <Link href="/safari-packages" className="btn-primary">
-              Explore Packages <ArrowRight className="w-4 h-4" />
+              Explore Packages <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
             </Link>
             <Link href="/contact" className="btn-outline">
               Plan My Trip
