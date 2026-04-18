@@ -23,7 +23,7 @@ module.exports = {
       fontFamily: {
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         caps:    ['"Cinzel"', 'serif'],
-        body:    ['"Inter"', 'system-ui', 'sans-serif'],
+        body:    ['"Urbanist"', 'system-ui', 'sans-serif'],
         accent:  ['"Playfair Display"', 'serif'],
       },
       backgroundImage: {
