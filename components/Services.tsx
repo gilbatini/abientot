@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Plane, Car, Building2, Tent, Coffee, Telescope } from 'lucide-react'
 import { SERVICES } from '@/lib/constants'
 
@@ -11,53 +12,90 @@ const ICONS: Record<string, React.ReactNode> = {
   binoculars: <Telescope  className="w-6 h-6" strokeWidth={1.5} />,
 }
 
+const SERVICE_IMAGES: Record<string, string> = {
+  plane:      'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&auto=format&fit=crop',
+  car:        'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&auto=format&fit=crop',
+  building:   'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop',
+  tent:       'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&auto=format&fit=crop',
+  coffee:     'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&auto=format&fit=crop',
+  binoculars: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&auto=format&fit=crop',
+}
+
 export default function Services() {
   return (
-    <section className="px-16 py-32 bg-white max-lg:px-8 max-md:px-6" id="services">
-      <div className="max-w-2xl mb-16">
-        <div className="eyebrow"><div className="eyebrow-bar" /><span className="eyebrow-tag">Our Services</span></div>
-        <h2 className="sec-title">Everything You Need,<br /><span className="text-gradient-teal">All in One Place</span></h2>
-        <p className="sec-subtitle">From luxury lodges to thrilling wildlife encounters, we handle every detail of your African adventure.</p>
+    <section className="bg-[#0a1a0a]" id="services">
+      {/* Section header */}
+      <div className="px-16 pt-32 pb-16 max-lg:px-8 max-md:px-6">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-7 h-px bg-brand-gold" />
+          <span className="font-caps text-[9px] font-medium tracking-[0.26em] uppercase text-brand-gold">Our Services</span>
+        </div>
+        <h2 className="font-display text-[clamp(40px,4.5vw,68px)] font-light leading-[1.06] tracking-[-0.01em] text-white mb-4">
+          Everything You Need,<br /><span className="text-gradient-teal">All in One Place</span>
+        </h2>
+        <p className="font-body text-[15px] font-light leading-[1.85] text-white/50 max-w-xl">
+          From luxury lodges to thrilling wildlife encounters, we handle every detail of your African adventure.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {SERVICES.map((svc, index) => (
-          <div
-            key={svc.title}
-            className={`group relative rounded-2xl p-8 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] border border-[#E8EDE6] border-t-2 border-t-transparent hover:border-t-brand-gold hover:-translate-y-1 hover:shadow-[0_20px_48px_-12px_rgba(26,46,26,0.12)] ${index % 2 === 0 ? 'bg-white' : 'bg-[#FDFAF5]'}`}
-          >
-            {/* Gold left-accent bar */}
-            <div className="absolute left-0 top-6 bottom-6 w-[3px] rounded-full bg-brand-gold origin-center scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]" />
+      {/* Alternating full-width rows */}
+      <div className="divide-y divide-white/6">
+        {SERVICES.map((svc, index) => {
+          const imageLeft = index % 2 !== 0
 
-            {/* Icon */}
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-teal/15 to-brand-teal/5 flex items-center justify-center text-brand-teal mb-6 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:from-brand-teal group-hover:to-brand-teal-mid group-hover:text-white">
-              {ICONS[svc.icon]}
-            </div>
-
-            <h3 className="font-display text-[26px] font-light text-brand-dark mb-3 leading-tight">
-              {svc.title}
-            </h3>
-            <p className="font-body text-[14px] leading-[1.85] text-[#5A7751] mb-5">
-              {svc.desc}
-            </p>
-
-            <ul className="flex flex-col gap-2 mb-6">
-              {svc.features.map((f) => (
-                <li key={f} className="flex items-center gap-2.5 font-body text-[13px] text-[#5A7751]">
-                  <span className="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              href={svc.href}
-              className="inline-flex items-center gap-2 font-caps text-[9px] tracking-[0.2em] uppercase text-brand-teal opacity-60 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-100 group-hover:gap-3"
+          const textCol = (
+            <div
+              key="text"
+              className={`bg-[#111f11] flex flex-col justify-center px-12 lg:px-16 py-16 max-md:px-8 max-md:py-12 ${imageLeft ? 'lg:order-2' : 'lg:order-1'}`}
             >
-              Learn more <ArrowRight className="w-3 h-3" strokeWidth={1.5} />
-            </Link>
-          </div>
-        ))}
+              <div className="w-14 h-14 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-8">
+                {ICONS[svc.icon]}
+              </div>
+              <h3 className="font-display text-[clamp(28px,3vw,40px)] font-light text-white leading-tight mb-4">
+                {svc.title}
+              </h3>
+              <p className="font-body text-[15px] leading-[1.85] text-white/60 mb-6 max-w-[480px]">
+                {svc.desc}
+              </p>
+              <ul className="flex flex-col gap-2.5 mb-8">
+                {svc.features.map((f) => (
+                  <li key={f} className="flex items-center gap-3 font-body text-[13px] text-white/55">
+                    <span className="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href={svc.href}
+                className="inline-flex items-center gap-2 font-caps text-[9px] tracking-[0.2em] uppercase text-brand-gold/60 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-brand-gold hover:gap-3 w-fit"
+              >
+                Learn more <ArrowRight className="w-3 h-3" strokeWidth={1.5} />
+              </Link>
+            </div>
+          )
+
+          const imageCol = (
+            <div
+              key="image"
+              className={`relative overflow-hidden min-h-[340px] lg:min-h-[480px] group ${imageLeft ? 'lg:order-1' : 'lg:order-2'}`}
+            >
+              <Image
+                src={SERVICE_IMAGES[svc.icon]}
+                alt={svc.title}
+                fill
+                className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.04]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
+            </div>
+          )
+
+          return (
+            <div key={svc.title} className="grid grid-cols-1 lg:grid-cols-2">
+              {imageLeft ? [imageCol, textCol] : [textCol, imageCol]}
+            </div>
+          )
+        })}
       </div>
     </section>
   )

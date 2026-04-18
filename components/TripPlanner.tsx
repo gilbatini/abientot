@@ -2,60 +2,90 @@ import Link from 'next/link'
 import { ArrowRight, MessageCircle } from 'lucide-react'
 
 const STEPS = [
-  { num: '01', label: 'Tell Us', title: 'Share your dream' },
-  { num: '02', label: 'We Plan', title: 'Custom itinerary' },
-  { num: '03', label: 'Explore', title: 'Your adventure begins' },
+  { num: '01', label: 'Tell Us',   title: 'Share your dream' },
+  { num: '02', label: 'We Plan',   title: 'Custom itinerary' },
+  { num: '03', label: 'Explore',   title: 'Your adventure begins' },
 ]
 
 export default function TripPlanner() {
   return (
-    <section className="px-16 py-28 bg-[#FDFAF5] text-center relative overflow-hidden max-lg:px-8 max-md:px-6">
-      {/* Subtle background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-brand-teal/5 blur-[80px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-brand-gold/5 blur-[80px]" />
-      </div>
+    <section className="relative py-32 text-center overflow-hidden">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1516026672322-bc52d61a4d2d?w=1600&auto=format&fit=crop')" }}
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.72)' }} />
+      {/* Warm vignette */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.35) 100%)' }}
+      />
 
-      <div className="relative z-10">
-        <div className="eyebrow justify-center mb-4"><div className="eyebrow-bar" /><span className="eyebrow-tag">Plan Your Trip</span><div className="eyebrow-bar" /></div>
-        <h2 className="font-display font-light text-brand-dark mb-5" style={{fontSize:'clamp(52px,6vw,88px)', lineHeight:1.02, letterSpacing:'-0.02em'}}>
-          Let's Make the <em className="italic font-light text-gradient-teal not-italic" style={{fontStyle:'italic'}}>Right Trip</em>
+      <div className="relative z-10 px-16 max-lg:px-8 max-md:px-6">
+        <div className="flex items-center justify-center gap-3 mb-5">
+          <div className="w-7 h-px bg-brand-gold" />
+          <span className="font-caps text-[9px] font-medium tracking-[0.26em] uppercase text-brand-gold">Plan Your Trip</span>
+          <div className="w-7 h-px bg-brand-gold" />
+        </div>
+
+        <h2
+          className="font-display font-light leading-[1.02] tracking-[-0.02em] mb-6 mx-auto"
+          style={{ fontSize: 'clamp(52px,7vw,100px)', maxWidth: '900px' }}
+        >
+          <span className="block text-white">Let&apos;s Make the</span>
+          <em
+            className="block not-italic italic"
+            style={{
+              background: 'linear-gradient(135deg, #e8d5b7, #f0c060, #d4a843)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            Right Trip
+          </em>
         </h2>
-        <p className="font-body text-[16px] font-light leading-[1.85] text-[#4A6741] max-w-[560px] mx-auto mb-12">
-          Gorilla trekking, wildlife safaris, cultural experiences — tell us what moves you and we'll build it perfectly.
+
+        <p className="font-body text-[16px] font-light leading-[1.85] text-white/65 max-w-[560px] mx-auto mb-14">
+          Gorilla trekking, wildlife safaris, cultural experiences — tell us what moves you and we&apos;ll build it perfectly.
         </p>
 
         {/* Steps */}
         <div className="flex items-center justify-center gap-0 mb-14 flex-wrap max-md:flex-col max-md:items-stretch max-md:max-w-sm max-md:mx-auto">
           {STEPS.map((step, i) => (
             <div key={step.num} className="flex items-center">
-              <div className="flex items-center gap-3.5 bg-white border border-[#D8E8D0] rounded-xl px-6 py-4 shadow-sm">
-                <div className="w-9 h-9 rounded-full bg-brand-teal flex items-center justify-center font-caps text-[10px] font-semibold tracking-[0.05em] text-white flex-shrink-0">
+              <div className="flex items-center gap-3.5 bg-white/8 border border-white/15 backdrop-blur-sm rounded-xl px-6 py-4">
+                <div className="w-9 h-9 rounded-full bg-brand-gold flex items-center justify-center font-caps text-[10px] font-semibold tracking-[0.05em] text-[#0a1a0a] flex-shrink-0">
                   {step.num}
                 </div>
                 <div className="text-left">
-                  <p className="font-caps text-[8px] tracking-[0.2em] uppercase text-[#8FA88A]">{step.label}</p>
-                  <p className="font-display text-[17px] font-light text-brand-dark mt-0.5">{step.title}</p>
+                  <p className="font-caps text-[8px] tracking-[0.2em] uppercase text-white/40">{step.label}</p>
+                  <p className="font-display text-[17px] font-light text-white mt-0.5">{step.title}</p>
                 </div>
               </div>
               {i < STEPS.length - 1 && (
-                <span className="text-[#8FA88A] text-xl mx-4 max-md:hidden">→</span>
+                <span className="text-white/30 text-xl mx-4 max-md:hidden">→</span>
               )}
             </div>
           ))}
         </div>
 
+        {/* CTAs */}
         <div className="flex items-center justify-center gap-4 flex-wrap">
-          <Link href="/contact" className="btn-primary">
-            Get a Free Quote <ArrowRight className="w-4 h-4" />
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2.5 font-caps text-[10px] font-bold tracking-[0.2em] uppercase bg-brand-gold text-[#0a1a0a] px-8 py-4 rounded-lg transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand-gold/90 hover:-translate-y-0.5"
+          >
+            Get a Free Quote <ArrowRight className="w-4 h-4" strokeWidth={2} />
           </Link>
           <a
             href="https://wa.me/256788138721"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-caps text-[10px] tracking-[0.18em] uppercase border border-[#D8E8D0] text-[#4A6741] px-8 py-4 rounded-lg hover:border-brand-teal hover:text-brand-teal transition-all duration-200"
+            className="inline-flex items-center gap-2 font-caps text-[10px] tracking-[0.18em] uppercase border border-white/30 text-white px-8 py-4 rounded-lg transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-white hover:bg-white/10"
           >
-            <MessageCircle className="w-4 h-4" /> WhatsApp Us
+            <MessageCircle className="w-4 h-4" strokeWidth={1.5} /> WhatsApp Us
           </a>
         </div>
       </div>

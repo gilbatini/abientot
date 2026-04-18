@@ -16,76 +16,82 @@ export default function Testimonials() {
   const [featured, ...rest] = TESTIMONIALS
 
   return (
-    <section className="px-16 py-32 bg-[#FDFAF5] max-lg:px-8 max-md:px-6" id="testimonials">
+    <section className="px-16 py-32 bg-[#0f1a0f] max-lg:px-8 max-md:px-6" id="testimonials">
+      {/* Header */}
       <div className="mb-16">
-        <div className="eyebrow"><div className="eyebrow-bar" /><span className="eyebrow-tag">Testimonials</span></div>
-        <h2 className="sec-title">What Travellers<br /><span className="text-gradient-teal">Are Saying</span></h2>
-        <p className="sec-subtitle">Real stories from real adventurers who explored Africa with us.</p>
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-7 h-px bg-brand-gold" />
+          <span className="font-caps text-[9px] font-medium tracking-[0.26em] uppercase text-brand-gold">Testimonials</span>
+        </div>
+        <h2 className="font-display text-[clamp(40px,4.5vw,68px)] font-light leading-[1.06] tracking-[-0.01em] mb-4 text-white">
+          What Travellers<br /><span className="text-gradient-teal">Are Saying</span>
+        </h2>
+        <p className="font-body text-[15px] font-light leading-[1.85] text-white/50 max-w-xl">
+          Real stories from real adventurers who explored Africa with us.
+        </p>
       </div>
 
-      {/* Asymmetric editorial grid: 1 large featured left + 2 stacked right */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-6 mb-10">
+      {/* Asymmetric editorial grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-5 mb-10">
 
-        {/* Featured testimonial */}
-        <div className="relative bg-[#F5F0E8] border border-[#E2D9CC] rounded-3xl p-10 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:shadow-[0_24px_56px_-16px_rgba(26,46,26,0.14)]">
-          {/* Giant decorative quote mark */}
+        {/* Featured card */}
+        <div className="relative bg-[#1a2e1a] border border-brand-gold/20 rounded-3xl p-10 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:shadow-[0_24px_56px_-16px_rgba(0,0,0,0.5)] hover:border-brand-gold/35">
+          {/* Giant decorative quote */}
           <div
-            className="absolute -top-6 left-4 font-display italic leading-none text-brand-teal/10 select-none pointer-events-none"
+            className="absolute -top-6 left-4 font-display italic leading-none text-brand-gold/10 select-none pointer-events-none"
             style={{ fontSize: '200px', lineHeight: 1 }}
             aria-hidden="true"
           >
             &ldquo;
           </div>
-
           <div className="relative">
             <Stars count={featured.rating} />
-            <blockquote className="font-display text-[20px] font-light leading-[1.65] text-brand-dark italic mt-5 mb-8">
+            <blockquote className="font-display text-[20px] font-light leading-[1.65] text-white/90 italic mt-5 mb-8">
               &ldquo;{featured.text}&rdquo;
             </blockquote>
-            <div className="flex items-center gap-4 pt-6 border-t border-[#D8CFC4]">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-teal to-[#239e97] flex items-center justify-center font-display text-xl text-white flex-shrink-0">
+            <div className="flex items-center gap-4 pt-6 border-t border-white/10">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-gold/80 to-brand-gold/50 flex items-center justify-center font-display text-xl text-[#0a1a0a] font-medium flex-shrink-0">
                 {featured.avatar}
               </div>
               <div>
-                <p className="font-caps text-[9.5px] font-semibold tracking-[0.16em] uppercase text-brand-dark">
+                <p className="font-caps text-[9.5px] font-semibold tracking-[0.16em] uppercase text-white/90">
                   {featured.name}
                 </p>
-                <p className="font-body text-[12px] text-[#8FA88A] mt-0.5">{featured.country}</p>
+                <p className="font-body text-[12px] text-white/40 mt-0.5">{featured.country}</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right column — 2 stacked cards */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-5">
           {rest.map((t) => (
             <div
               key={t.name}
-              className="relative bg-white border border-[#E8EDE6] rounded-2xl p-8 overflow-hidden flex-1 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:shadow-[0_20px_48px_-12px_rgba(26,46,26,0.1)]"
+              className="relative bg-[#152215] border border-white/8 rounded-2xl p-8 overflow-hidden flex-1 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:shadow-[0_20px_48px_-12px_rgba(0,0,0,0.4)] hover:border-brand-gold/20"
             >
               {/* Decorative quote */}
               <div
-                className="absolute -top-3 left-3 font-display italic leading-none text-brand-gold/12 select-none pointer-events-none"
+                className="absolute -top-3 left-3 font-display italic leading-none text-brand-gold/8 select-none pointer-events-none"
                 style={{ fontSize: '120px', lineHeight: 1 }}
                 aria-hidden="true"
               >
                 &ldquo;
               </div>
-
               <div className="relative">
                 <Stars count={t.rating} />
-                <blockquote className="font-body text-[14px] leading-[1.85] text-[#5A7751] italic mt-4 mb-6">
+                <blockquote className="font-body text-[14px] leading-[1.85] text-white/65 italic mt-4 mb-6">
                   &ldquo;{t.text}&rdquo;
                 </blockquote>
-                <div className="flex items-center gap-3 pt-5 border-t border-[#E8EDE6]">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-teal/80 to-[#239e97] flex items-center justify-center font-display text-lg text-white flex-shrink-0">
+                <div className="flex items-center gap-3 pt-5 border-t border-white/8">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-gold/70 to-brand-gold/40 flex items-center justify-center font-display text-lg text-[#0a1a0a] font-medium flex-shrink-0">
                     {t.avatar}
                   </div>
                   <div>
-                    <p className="font-caps text-[9px] font-semibold tracking-[0.16em] uppercase text-brand-dark">
+                    <p className="font-caps text-[9px] font-semibold tracking-[0.16em] uppercase text-white/80">
                       {t.name}
                     </p>
-                    <p className="font-body text-[12px] text-[#8FA88A] mt-0.5">{t.country}</p>
+                    <p className="font-body text-[12px] text-white/35 mt-0.5">{t.country}</p>
                   </div>
                 </div>
               </div>
@@ -95,17 +101,20 @@ export default function Testimonials() {
       </div>
 
       {/* CTA strip */}
-      <div className="flex items-center justify-between bg-gradient-to-r from-brand-teal/6 to-brand-gold/6 border border-[#D8E8D0] rounded-2xl px-8 py-6 flex-wrap gap-4">
+      <div className="flex items-center justify-between bg-brand-gold/8 border border-brand-gold/20 rounded-2xl px-8 py-6 flex-wrap gap-4">
         <div>
-          <h3 className="font-display text-[28px] font-light text-brand-dark mb-1 leading-tight">
+          <h3 className="font-display text-[28px] font-light text-white mb-1 leading-tight">
             Ready to write your own story?
           </h3>
-          <p className="font-body text-[14px] text-[#5A7751]">
+          <p className="font-body text-[14px] text-white/50">
             Join thousands of adventurers who made Uganda their destination.
           </p>
         </div>
-        <Link href="/contact" className="btn-primary flex-shrink-0">
-          Start Planning <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+        <Link
+          href="/contact"
+          className="inline-flex items-center gap-2.5 font-caps text-[10px] font-bold tracking-[0.2em] uppercase bg-brand-gold text-[#0a1a0a] px-8 py-4 rounded-lg transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand-gold/90 hover:-translate-y-0.5 flex-shrink-0"
+        >
+          Start Planning <ArrowRight className="w-4 h-4" strokeWidth={2} />
         </Link>
       </div>
     </section>
