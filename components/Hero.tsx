@@ -6,16 +6,20 @@ import { ArrowRight } from 'lucide-react'
 import { BRAND } from '@/lib/constants'
 
 const SLIDES = [
-  { src: 'https://static.wixstatic.com/media/5d0656_b447524383114eeaa1af7cfafeed4c2f~mv2.jpg', alt: 'African Lioness' },
-  { src: 'https://static.wixstatic.com/media/5d0656_c8d282174a78403691da00270a9a3791~mv2.jpg', alt: 'Savannah Horizon' },
-  { src: 'https://images.unsplash.com/photo-1772308549101-07bd3b04c71c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Holiday by the Water' },
-  { src: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1920&auto=format&fit=crop', alt: 'Emirates Departure' },
-  { src: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1920&auto=format&fit=crop', alt: 'Luxury Transfer' },
-  { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920&auto=format&fit=crop', alt: 'Sunset by the Water' },
+  { src: '/images/sunset-slide.jpeg', alt: 'Tropical Island Escape', caption: 'Sun, sea & coconuts — your perfect getaway' },
+  { src: '/images/airport_pickup.jpg', alt: 'Premium Airport Transfers', caption: 'Arrive in style — Mercedes S-Class from terminal to lodge' },
+  { src: '/images/businessman-in-business-class-having-inflight-meal-768.jpeg', alt: 'Business Class Travel', caption: 'First class comfort on every flight we book for you' },
 ]
 
 export default function Hero() {
   const [slide, setSlide] = useState(0)
+  const [captionVisible, setCaptionVisible] = useState(true)
+
+  useEffect(() => {
+    setCaptionVisible(false)
+    const show = setTimeout(() => setCaptionVisible(true), 100)
+    return () => clearTimeout(show)
+  }, [slide])
 
   useEffect(() => {
     const t = setInterval(() => setSlide(s => (s + 1) % SLIDES.length), 7000)
@@ -62,6 +66,12 @@ export default function Hero() {
             </span>
             <span className="block font-caps text-white/60 not-italic" style={{fontSize:'0.22em', letterSpacing:'0.3em', marginTop:'16px'}}>
               Crafted for those who dare to explore
+            </span>
+            <span
+              className={`block font-caps text-white/50 text-[10px] tracking-[0.2em] uppercase transition-opacity duration-700 ${captionVisible ? 'opacity-100' : 'opacity-0'}`}
+              style={{fontSize:'0.16em', marginTop:'10px'}}
+            >
+              {SLIDES[slide].caption}
             </span>
           </h1>
 
