@@ -45,13 +45,6 @@ const TEAM = [
     photo: '/Team/imgi_6_twaha_edited.jpg',
   },
   {
-    name: 'Sserugo Mathias',
-    role: 'Administrator',
-    bio: 'Mathias keeps the day-to-day operations of À Bientôt running smoothly. His attention to detail and organisational skills ensure every tour is flawlessly coordinated.',
-    initial: 'S',
-    photo: '/Team/imgi_6_mat_edited.jpg',
-  },
-  {
     name: 'Remmy Ssekanjako',
     role: 'Director of IT',
     bio: 'Remmy drives the technology vision at À Bientôt, ensuring our digital platforms deliver seamless experiences for clients booking their dream African safaris.',

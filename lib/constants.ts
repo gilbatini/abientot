@@ -107,18 +107,18 @@ export const TESTIMONIALS = [
     avatar:  'S',
   },
   {
-    name:    'James K.',
-    country: 'United States',
+    name:    'Joyce M.',
+    country: 'Nairobi, Kenya',
     rating:  5,
-    text:    "I've used a dozen travel agencies across Africa. None come close to the attention to detail À Bientôt brings. They answered messages at midnight. Everything was seamless, beautiful, and perfectly paced.",
+    text:    'Our Uganda gorilla trek through Bwindi was beyond anything I imagined — À Bientôt arranged everything down to the last detail, from Kampala transfers to our forest permits. Watching a mountain gorilla family at sunrise was the single greatest experience of my life.',
     avatar:  'J',
   },
   {
-    name:    'Anna L.',
-    country: 'Germany',
+    name:    'Claude R.',
+    country: 'Kigali, Rwanda',
     rating:  5,
-    text:    'Our family safari to Queen Elizabeth National Park exceeded every expectation. The children were mesmerised by the tree-climbing lions. À Bientôt made it feel effortless — every detail handled with care.',
-    avatar:  'A',
+    text:    'What sets À Bientôt apart is the genuine care they show every client — our guide knew every animal, every bird call, and every story the forest had to tell. From first enquiry to final drop-off, the attention to detail was simply flawless.',
+    avatar:  'C',
   },
 ]
 

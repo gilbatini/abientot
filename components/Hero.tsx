@@ -9,6 +9,9 @@ const SLIDES = [
   { src: 'https://static.wixstatic.com/media/5d0656_b447524383114eeaa1af7cfafeed4c2f~mv2.jpg', alt: 'African Lioness' },
   { src: 'https://static.wixstatic.com/media/5d0656_c8d282174a78403691da00270a9a3791~mv2.jpg', alt: 'Savannah Horizon' },
   { src: 'https://images.unsplash.com/photo-1772308549101-07bd3b04c71c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Holiday by the Water' },
+  { src: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1920&auto=format&fit=crop', alt: 'Emirates Departure' },
+  { src: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1920&auto=format&fit=crop', alt: 'Luxury Transfer' },
+  { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920&auto=format&fit=crop', alt: 'Sunset by the Water' },
 ]
 
 export default function Hero() {
@@ -64,7 +67,7 @@ export default function Hero() {
 
           {/* Description */}
           <p className="font-body text-[15px] font-light leading-[1.9] text-white/75 max-w-[500px] mb-11">
-            From <strong className="text-white/88 font-medium">gorilla trekking in Bwindi</strong> to thundering Murchison Falls —
+            From <strong className="text-white/88 font-medium">gorilla trekking in Bwindi</strong> to serene <strong className="text-white/88 font-medium">Lake Bunyonyi</strong> and thundering <strong className="text-white/88 font-medium">Murchison Falls</strong> —
             À Bientôt curates extraordinary journeys across Uganda and the world, tailored to every traveller.
           </p>
 
