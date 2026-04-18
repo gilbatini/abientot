@@ -11,6 +11,12 @@ const SLIDES = [
   { src: '/images/businessman-in-business-class-having-inflight-meal-768.jpeg', alt: 'Business Class Travel', caption: 'First class comfort on every flight we book for you' },
 ]
 
+const ease = 'cubic-bezier(0.16, 1, 0.3, 1)'
+
+function fadeUp(delay: string) {
+  return { animation: `fadeUpIn 1s ${ease} both ${delay}` }
+}
+
 export default function Hero() {
   const [slide, setSlide] = useState(0)
   const [captionVisible, setCaptionVisible] = useState(true)
@@ -27,7 +33,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative w-full h-screen min-h-[680px] flex items-end overflow-hidden">
+    <section className="relative w-full min-h-[100dvh] flex items-end overflow-hidden">
       {/* Slides */}
       {SLIDES.map((s, i) => (
         <div
@@ -39,16 +45,24 @@ export default function Hero() {
 
       {/* Overlay */}
       <div className="absolute inset-0 z-[2]" style={{
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 30%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.92) 100%)'
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.70) 20%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.60) 70%, rgba(0,0,0,0.93) 100%)'
       }} />
 
       {/* Content */}
       <div className="relative z-10 w-full px-16 pb-24 pt-32 grid grid-cols-[1fr_220px] items-end gap-12 max-lg:grid-cols-1 max-lg:px-8 max-md:px-6 max-md:pb-16">
 
         {/* Left */}
-        <div>
+        <div className="relative">
+          {/* Text backdrop */}
+          <div className="absolute inset-y-0 -left-16 -right-8 z-[-1] max-md:-left-6" style={{
+            background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, transparent 100%)'
+          }} />
+
           {/* Badge */}
-          <div className="inline-flex items-center gap-2.5 bg-white/10 border border-white/25 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6">
+          <div
+            className="inline-flex items-center gap-2.5 bg-white/10 border border-white/25 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6"
+            style={fadeUp('0.05s')}
+          >
             <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shadow-[0_0_12px_#D4A843] animate-pulse" />
             <span className="font-caps text-[9px] font-medium tracking-[0.22em] uppercase text-brand-gold">
               {BRAND.tagline}
@@ -56,33 +70,52 @@ export default function Hero() {
           </div>
 
           {/* H1 */}
-          <h1 className="font-display font-light leading-[0.92] tracking-[-0.02em] mb-6" style={{fontSize:'clamp(64px,9vw,130px)', textShadow: '0 2px 24px rgba(0,0,0,0.6)'}}>
-            <span className="block text-white font-light">Your Next</span>
-            <span className="block italic font-normal" style={{
-              background:'linear-gradient(135deg, #e8d5b7, #f0c060, #d4a843)',
-              WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text'
-            }}>
+          <h1
+            className="font-display font-light leading-[0.92] tracking-[-0.02em] mb-6"
+            style={{ fontSize: 'clamp(64px,9vw,130px)', textShadow: '0 2px 40px rgba(0,0,0,0.9), 0 4px 80px rgba(0,0,0,0.7)' }}
+          >
+            <span className="block text-white font-light" style={fadeUp('0.2s')}>
+              Your Next
+            </span>
+            <span
+              className="block italic font-normal"
+              style={{
+                ...fadeUp('0.35s'),
+                background: 'linear-gradient(135deg, #e8d5b7, #f0c060, #d4a843)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
               Adventure
             </span>
-            <span className="block font-caps text-white/60 not-italic" style={{fontSize:'0.22em', letterSpacing:'0.3em', marginTop:'16px'}}>
+            <span
+              className="block font-caps text-white/60 not-italic"
+              style={{ ...fadeUp('0.5s'), fontSize: '0.22em', letterSpacing: '0.3em', marginTop: '16px' }}
+            >
               Crafted for those who dare to explore
             </span>
             <span
-              className={`block font-caps text-white/50 text-[10px] tracking-[0.2em] uppercase transition-opacity duration-700 ${captionVisible ? 'opacity-100' : 'opacity-0'}`}
-              style={{fontSize:'0.16em', marginTop:'10px'}}
+              className={`block font-caps text-white/50 tracking-[0.2em] uppercase transition-opacity duration-700 ${captionVisible ? 'opacity-100' : 'opacity-0'}`}
+              style={{ fontSize: '0.16em', marginTop: '10px' }}
             >
               {SLIDES[slide].caption}
             </span>
           </h1>
 
           {/* Description */}
-          <p className="font-body text-[15px] font-light leading-[1.9] text-white/75 max-w-[500px] mb-11">
-            From <strong className="text-white/88 font-medium">gorilla trekking in Bwindi</strong> to serene <strong className="text-white/88 font-medium">Lake Bunyonyi</strong> and thundering <strong className="text-white/88 font-medium">Murchison Falls</strong> —
+          <p
+            className="font-body text-[15px] font-light leading-[1.9] text-white/75 max-w-[500px] mb-11"
+            style={fadeUp('0.6s')}
+          >
+            From <strong className="text-white/90 font-medium">gorilla trekking in Bwindi</strong> to serene{' '}
+            <strong className="text-white/90 font-medium">Lake Bunyonyi</strong> and thundering{' '}
+            <strong className="text-white/90 font-medium">Murchison Falls</strong> —
             À Bientôt curates extraordinary journeys across Uganda and the world, tailored to every traveller.
           </p>
 
           {/* CTAs */}
-          <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex items-center gap-4 flex-wrap" style={fadeUp('0.75s')}>
             <Link href="/safari-packages" className="btn-primary">
               Explore Packages <ArrowRight className="w-4 h-4" />
             </Link>
@@ -93,9 +126,12 @@ export default function Hero() {
         </div>
 
         {/* Stats — hidden on mobile */}
-        <div className="flex flex-col gap-3 max-lg:hidden">
+        <div className="flex flex-col gap-3 max-lg:hidden" style={fadeUp('0.9s')}>
           {BRAND.stats.map((stat) => (
-            <div key={stat.label} className="bg-white/8 border border-white/12 backdrop-blur-md rounded-2xl px-5 py-4">
+            <div
+              key={stat.label}
+              className="bg-white/8 border border-white/12 backdrop-blur-md rounded-2xl px-5 py-4 transition-all duration-300 hover:bg-white/12 hover:border-white/20"
+            >
               <span className="block font-display text-[42px] font-light text-brand-gold leading-none tracking-[-0.02em]">
                 {stat.value}{stat.star && <span className="text-brand-gold text-2xl ml-1">★</span>}
               </span>
@@ -113,14 +149,14 @@ export default function Hero() {
           <button
             key={i}
             onClick={() => setSlide(i)}
-            className={`h-0.5 rounded-full transition-all duration-500 ${i === slide ? 'w-8 bg-brand-gold' : 'w-5 bg-white/30'}`}
+            className={`h-0.5 rounded-full transition-all duration-500 ${i === slide ? 'w-8 bg-brand-gold' : 'w-5 bg-white/30 hover:bg-white/50'}`}
           />
         ))}
       </div>
 
       {/* Scroll hint */}
       <div className="absolute bottom-10 right-8 z-10 flex flex-col items-center gap-2 max-md:hidden">
-        <span className="font-caps text-[8px] tracking-[0.3em] text-white/30 uppercase" style={{writingMode:'vertical-rl'}}>Scroll</span>
+        <span className="font-caps text-[8px] tracking-[0.3em] text-white/30 uppercase" style={{ writingMode: 'vertical-rl' }}>Scroll</span>
         <div className="w-px h-8 bg-gradient-to-b from-white/20 to-transparent" />
       </div>
     </section>
