@@ -174,7 +174,7 @@ export default async function BlogPostPage(
         <div className="max-w-3xl mx-auto">
 
           {/* Excerpt lead */}
-          <p className="font-display text-[20px] font-light italic text-[#4A6741] leading-[1.75] mb-10 pb-10 border-b border-[#D8E8D0]">
+          <p className="font-display text-[20px] font-light italic text-[#4A6741] leading-[1.75] mb-10 pb-10 border-b border-[#D8E8D0] pl-px overflow-visible">
             {post.excerpt}
           </p>
 
