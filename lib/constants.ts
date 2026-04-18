@@ -130,7 +130,7 @@ export const BLOG_POSTS = [
     cat:     'Safaris',
     date:    'Dec 15, 2024',
     read:    '8 min read',
-    image:   'https://images.unsplash.com/photo-1504173010664-32509107de5b?w=800&auto=format&fit=crop',
+    image:   'https://images.unsplash.com/photo-1516026672322-bc52d61a4d2d?w=800&auto=format&fit=crop',
   },
   {
     slug:    'silverback-gorillas-uganda',
