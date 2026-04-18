@@ -51,6 +51,20 @@ const TEAM = [
     initial: 'R',
     photo: '/Team/imgi_6_remmy.jpg',
   },
+  {
+    name: 'Patience Nyanja',
+    role: 'Office Administrator',
+    bio: 'Patience keeps the À Bientôt office running with quiet precision. From coordinating bookings to managing client communications, she ensures every journey begins with a seamless experience behind the scenes.',
+    initial: 'P',
+    photo: '/images/team/patience-nyanja.jpeg',
+  },
+  {
+    name: 'Nakiguli Shamilah',
+    role: 'Office Administrator',
+    bio: 'Shamilah brings warmth and professionalism to every client interaction. Her attention to detail and dedication to service excellence make her an indispensable part of the À Bientôt team.',
+    initial: 'N',
+    photo: '/images/team/nakiguli-shamilah.jpeg',
+  },
 ]
 
 const VALUES = [
