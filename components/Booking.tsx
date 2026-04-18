@@ -6,8 +6,8 @@ import { supabase } from '@/lib/supabase'
 
 const DESTINATIONS = ['Bwindi Forest — Gorilla Trekking', 'Murchison Falls', 'Queen Elizabeth NP', 'Lake Bunyonyi', 'Kidepo Valley', 'Kibale Forest', 'Custom Itinerary']
 
-const inputCls = 'w-full bg-[#F5F0E8] border border-[#E2D9CC] rounded-xl px-4 py-3 font-body text-[14px] text-brand-dark placeholder:text-[#8A9E84] focus:outline-none focus:border-brand-gold transition-colors duration-200'
-const labelCls = 'block font-caps text-[9px] tracking-[0.2em] uppercase text-[#8A9E84] mb-1.5'
+const inputCls = 'w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 font-body text-[14px] text-white placeholder:text-white/30 focus:outline-none focus:border-brand-gold transition-colors duration-200'
+const labelCls = 'block font-caps text-[9px] tracking-[0.2em] uppercase text-white/40 mb-1.5'
 
 export default function Booking() {
   const [form, setForm]       = useState({ name: '', email: '', destination: '', date: '', guests: '', message: '' })
@@ -44,7 +44,7 @@ export default function Booking() {
   }
 
   return (
-    <section className="px-16 py-32 bg-white max-lg:px-8 max-md:px-6" id="book">
+    <section className="px-16 py-32 bg-[#0d1a0d] max-lg:px-8 max-md:px-6" id="book">
       <div className="grid grid-cols-2 gap-16 items-center max-lg:grid-cols-1 max-lg:gap-10">
 
         {/* Left copy */}
@@ -53,20 +53,19 @@ export default function Booking() {
             <div className="w-7 h-px bg-brand-gold" />
             <span className="font-caps text-[9px] font-medium tracking-[0.26em] uppercase text-brand-gold">Quick Booking</span>
           </div>
-          <div className="w-16 h-px bg-brand-gold mb-5" />
           <h2
-            className="font-display font-light text-brand-dark leading-[1.02] tracking-[-0.02em] mb-6"
+            className="font-display font-light text-white leading-[1.02] tracking-[-0.02em] mb-6"
             style={{ fontSize: 'clamp(48px,6vw,88px)' }}
           >
             Start Your<br />
             <span className="text-gradient-teal italic">Journey Today</span>
           </h2>
-          <p className="font-body text-[15px] font-light leading-[1.85] text-[#5A7751] max-w-[440px] mb-10">
+          <p className="font-body text-[15px] font-light leading-[1.85] text-white/55 max-w-[440px] mb-10">
             Tell us about your dream trip and we&apos;ll craft a personalised itinerary just for you.
           </p>
           <ul className="flex flex-col gap-4">
             {['No booking fees', 'Free personalised itinerary', 'Flexible cancellation policy'].map(f => (
-              <li key={f} className="flex items-center gap-3 font-body text-[14px] text-[#4A6741]">
+              <li key={f} className="flex items-center gap-3 font-body text-[14px] text-white/65">
                 <span className="w-6 h-6 rounded-full bg-brand-gold/15 flex items-center justify-center flex-shrink-0">
                   <Check className="w-3.5 h-3.5 text-brand-gold" strokeWidth={2} />
                 </span>
@@ -77,18 +76,18 @@ export default function Booking() {
         </div>
 
         {/* Form card */}
-        <div className="bg-white/80 backdrop-blur-md border border-[#E2D9CC] rounded-3xl p-8 shadow-[0_16px_48px_rgba(0,0,0,0.08)]">
+        <div className="bg-white/5 rounded-2xl border border-white/10 p-8">
           {sent ? (
             <div className="text-center py-10">
               <div className="w-16 h-16 rounded-full bg-brand-gold/15 flex items-center justify-center mx-auto mb-5">
                 <Check className="w-7 h-7 text-brand-gold" strokeWidth={2} />
               </div>
-              <h3 className="font-display text-[28px] font-light text-brand-dark mb-2">Request received</h3>
-              <p className="font-body text-[14px] text-[#5A7751]">We&apos;ll be in touch within 24 hours to plan your adventure.</p>
+              <h3 className="font-display text-[28px] font-light text-white mb-2">Request received</h3>
+              <p className="font-body text-[14px] text-white/55">We&apos;ll be in touch within 24 hours to plan your adventure.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <h3 className="font-display text-[24px] font-light text-brand-dark mb-1">
+              <h3 className="font-display text-[24px] font-light text-white mb-1">
                 Get a <span className="text-brand-gold">Free Quote</span>
               </h3>
 
@@ -112,10 +111,11 @@ export default function Booking() {
                   value={form.destination}
                   onChange={e => setForm({...form, destination: e.target.value})}
                   className={inputCls}
+                  style={{ colorScheme: 'dark' }}
                 >
-                  <option value="" className="bg-white text-[#8A9E84]">Select destination…</option>
+                  <option value="" className="bg-[#0d1a0d] text-white/50">Select destination…</option>
                   {DESTINATIONS.map(d => (
-                    <option key={d} value={d} className="bg-white text-brand-dark">{d}</option>
+                    <option key={d} value={d} className="bg-[#0d1a0d] text-white">{d}</option>
                   ))}
                 </select>
               </div>
@@ -128,6 +128,7 @@ export default function Booking() {
                     value={form.date}
                     onChange={e => setForm({...form, date: e.target.value})}
                     className={inputCls}
+                    style={{ colorScheme: 'dark' }}
                   />
                 </div>
                 <div>
@@ -137,7 +138,7 @@ export default function Booking() {
                 </div>
               </div>
 
-              {error && <p className="text-red-600 text-[13px] font-body">{error}</p>}
+              {error && <p className="text-red-400 text-[13px] font-body">{error}</p>}
 
               <button
                 type="submit"
