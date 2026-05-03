@@ -75,7 +75,7 @@ const PACKAGES = [
     price: '$1,200',
     tag: 'Off the Beaten Path',
     tagColor: 'bg-brand-earth/10 text-brand-earth border-brand-earth/20',
-    image: 'https://abientot-nextjs.vercel.app/images/gallery-5.jpg',
+    image: '/images/kidepo.jpeg',
     includes: ['Private charter flight option', 'Game drives (x4)', 'Narus Valley drives', 'Luxury tented camp', 'All meals'],
     slug: 'kidepo-valley',
   },
