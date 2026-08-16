@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { GOOGLE_WRITE_REVIEW_URL } from "@/lib/constants";
 import styles from "./review.module.css";
 
 const display = Space_Grotesk({
@@ -8,10 +9,8 @@ const display = Space_Grotesk({
   variable: "--font-display",
 });
 
-// À Bientôt Tour & Travels — Google Business Profile Place ID.
-// This is the direct "write a review" deep link (opens Google's review dialog).
-const GOOGLE_REVIEW_URL =
-  "https://search.google.com/local/writereview?placeid=ChIJj_wGX3i7fRcRAYi5tlBYtno";
+// Direct "write a review" deep link (opens Google's review dialog).
+const GOOGLE_REVIEW_URL = GOOGLE_WRITE_REVIEW_URL;
 
 export const metadata: Metadata = {
   title: "Leave a review · À Bientôt Tour & Travels",

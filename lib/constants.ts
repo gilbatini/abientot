@@ -1,3 +1,11 @@
+// ── Google Business Profile ──────────────────────────────────────────────
+// À Bientôt Tour & Travels — Google Place ID (used for reviews + review funnel).
+export const GOOGLE_PLACE_ID = 'ChIJj_wGX3i7fRcRAYi5tlBYtno'
+// Deep link that opens Google's "write a review" dialog.
+export const GOOGLE_WRITE_REVIEW_URL = `https://search.google.com/local/writereview?placeid=${GOOGLE_PLACE_ID}`
+// Link to the business profile / existing reviews on Google Maps.
+export const GOOGLE_REVIEWS_URL = `https://www.google.com/maps/place/?q=place_id:${GOOGLE_PLACE_ID}`
+
 export const BRAND = {
   name:     'À Bientôt Tour & Travels',
   tagline:  "Let's Explore",
