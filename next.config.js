@@ -7,6 +7,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'abientot-nextjs.vercel.app' },
       { protocol: 'https', hostname: '**.vercel.app' },
       { protocol: 'https', hostname: '**.supabase.co' },
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
     ],
     unoptimized: true,
   },

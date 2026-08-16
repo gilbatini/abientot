@@ -1,3 +1,7 @@
+// À Bientôt Tour & Travels — Google Business Profile Place ID.
+// Used both to deep-link "write a review" and to fetch live reviews via the Places API.
+export const GOOGLE_PLACE_ID = 'ChIJj_wGX3i7fRcRAYi5tlBYtno'
+
 export const BRAND = {
   name:     'À Bientôt Tour & Travels',
   tagline:  "Let's Explore",

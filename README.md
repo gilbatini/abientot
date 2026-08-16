@@ -34,6 +34,8 @@ Open [http://localhost:3000](http://localhost:3000)
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous key |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key (server only) |
 | `NEXT_PUBLIC_SITE_URL` | Production URL |
+| `RESEND_API_KEY` | Resend key for contact form notifications |
+| `GOOGLE_PLACES_API_KEY` | Places API (New) key — powers live reviews on `/reviews`. Falls back to static testimonials if unset. |
 
 ## Project Structure
 
