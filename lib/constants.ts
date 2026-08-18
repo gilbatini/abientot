@@ -98,27 +98,40 @@ export const SERVICES = [
   },
 ]
 
+// Google Business Profile — À Bientôt Tour & Travels
+// Place ID: ChIJj_wGX3i7fRcRAYi5tlBYtno
+export const GOOGLE_PLACE_ID = 'ChIJj_wGX3i7fRcRAYi5tlBYtno'
+// Deep link that opens the business listing + its reviews on Google Maps.
+export const GOOGLE_REVIEWS_URL =
+  `https://www.google.com/maps/place/?q=place_id:${GOOGLE_PLACE_ID}`
+
+// Live Google rating summary (captured 18 Aug 2026 — update when reviews change,
+// or wire up the Places API later per the roadmap in CLAUDE.md).
+export const GOOGLE_RATING = 5.0
+export const GOOGLE_REVIEW_COUNT = 3
+
+// Reviews copied verbatim from the Google Business Profile.
+// `country` and `date` are optional; only reviews with written text appear as cards.
+// (One further 5★ Google review — Lapyem Oscar — has no written text, so it is
+//  counted in GOOGLE_REVIEW_COUNT above but has no card here.)
 export const TESTIMONIALS = [
   {
-    name:    'Sarah M.',
-    country: 'United Kingdom',
+    name:    'Ramlah Nampenja',
+    country: '',
     rating:  5,
-    text:    'The gorilla trekking experience was absolutely life-changing. À Bientôt handled everything flawlessly — from Entebbe pickup to the forest guides. I was face-to-face with a silverback. Nothing prepares you for that.',
-    avatar:  'S',
+    text:    'Abientot tour & travels saved me the hustle of looking for accommodation & airport transfers. They literally travel with you & track your journey until your last destination. With Abientot I didn’t get the stress of waiting in the queue to fill in the entrance approval form to Singapore — all this was completed by their agent & I was left with showing the completed form to the authorities for an entrance stamp.',
+    avatar:  'R',
+    source:  'google',
+    date:    'Aug 2026',
   },
   {
-    name:    'Joyce M.',
-    country: 'Nairobi, Kenya',
+    name:    'Jugal N Ram',
+    country: '',
     rating:  5,
-    text:    'Our Uganda gorilla trek through Bwindi was beyond anything I imagined — À Bientôt arranged everything down to the last detail, from Kampala transfers to our forest permits. Watching a mountain gorilla family at sunrise was the single greatest experience of my life.',
+    text:    'Very nice company that provide the better services for their client.',
     avatar:  'J',
-  },
-  {
-    name:    'Claude R.',
-    country: 'Kigali, Rwanda',
-    rating:  5,
-    text:    'What sets À Bientôt apart is the genuine care they show every client — our guide knew every animal, every bird call, and every story the forest had to tell. From first enquiry to final drop-off, the attention to detail was simply flawless.',
-    avatar:  'C',
+    source:  'google',
+    date:    '2023',
   },
 ]
 

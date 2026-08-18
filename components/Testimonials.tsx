@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight, Star } from 'lucide-react'
 import { TESTIMONIALS } from '@/lib/constants'
+import GoogleBadge from './GoogleBadge'
 
 function Stars({ count }: { count: number }) {
   return (
@@ -58,8 +59,11 @@ export default function Testimonials() {
                 <p className="font-caps text-[9.5px] font-semibold tracking-[0.16em] uppercase text-brand-dark/90">
                   {featured.name}
                 </p>
-                <p className="font-body text-[12px] text-[#8A9E84] mt-0.5">{featured.country}</p>
+                {featured.country && (
+                  <p className="font-body text-[12px] text-[#8A9E84] mt-0.5">{featured.country}</p>
+                )}
               </div>
+              {featured.source === 'google' && <GoogleBadge className="ml-auto" />}
             </div>
           </div>
         </div>
@@ -69,7 +73,7 @@ export default function Testimonials() {
           {rest.map((t) => (
             <div
               key={t.name}
-              className="relative bg-white/70 backdrop-blur-sm border border-[#E2D9CC]/50 rounded-2xl p-8 overflow-hidden flex-1 shadow-[0_8px_24px_rgba(0,0,0,0.05)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:shadow-[0_20px_48px_-12px_rgba(0,0,0,0.10)] hover:border-brand-gold/20"
+              className={`relative bg-white/70 backdrop-blur-sm border border-[#E2D9CC]/50 rounded-2xl p-8 overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.05)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:shadow-[0_20px_48px_-12px_rgba(0,0,0,0.10)] hover:border-brand-gold/20 ${rest.length > 1 ? 'flex-1' : ''}`}
             >
               {/* Decorative quote */}
               <div
@@ -92,8 +96,11 @@ export default function Testimonials() {
                     <p className="font-caps text-[9px] font-semibold tracking-[0.16em] uppercase text-brand-dark/80">
                       {t.name}
                     </p>
-                    <p className="font-body text-[12px] text-[#8A9E84] mt-0.5">{t.country}</p>
+                    {t.country && (
+                      <p className="font-body text-[12px] text-[#8A9E84] mt-0.5">{t.country}</p>
+                    )}
                   </div>
+                  {t.source === 'google' && <GoogleBadge className="ml-auto" />}
                 </div>
               </div>
             </div>
