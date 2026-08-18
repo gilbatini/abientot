@@ -130,6 +130,18 @@ export const TESTIMONIALS = [
   },
 ]
 
+// Real reviews copied from our Google Business profile, shown statically on
+// /reviews until the Google Places API integration goes live. Newest first.
+export const GOOGLE_REVIEWS = [
+  {
+    author: 'Ramlah Nampenja',
+    rating: 5,
+    date: 'August 2026',
+    text:
+      "Abientot Tour & Travels saved me the hustle of looking for accommodation & airport transfers. They literally travel with you & track your journey until your last destination. With Abientot I didn't get the stress of waiting in the queue to fill in the entrance approval form to Singapore — all this was completed by their agent & I was left with showing the completed form to the authorities for an entrance stamp.",
+  },
+]
+
 export const BLOG_POSTS = [
   {
     slug:    'best-uganda-safari-packages',

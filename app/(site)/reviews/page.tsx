@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Star, ArrowRight, Quote } from 'lucide-react'
-import { TESTIMONIALS, GOOGLE_WRITE_REVIEW_URL, GOOGLE_REVIEWS_URL } from '@/lib/constants'
+import { TESTIMONIALS, GOOGLE_REVIEWS, GOOGLE_WRITE_REVIEW_URL, GOOGLE_REVIEWS_URL } from '@/lib/constants'
 import { getGoogleReviews, type GoogleReview } from '@/lib/google-reviews'
 
 export const metadata: Metadata = {
@@ -35,6 +35,16 @@ function toCards(google: GoogleReview[]): Card[] {
   }))
 }
 
+function staticGoogleCards(): Card[] {
+  return GOOGLE_REVIEWS.map((r) => ({
+    author: r.author,
+    meta: r.date,
+    rating: r.rating,
+    text: r.text,
+    source: 'google',
+  }))
+}
+
 function fallbackCards(): Card[] {
   return TESTIMONIALS.map((t) => ({
     author: t.name,
@@ -57,8 +67,16 @@ const GoogleGlyph = ({ className }: { className?: string }) => (
 export default async function ReviewsPage() {
   const live = await getGoogleReviews()
 
-  const cards = live && live.reviews.length > 0 ? toCards(live.reviews) : fallbackCards()
+  // Priority: live Google API → statically-copied Google reviews → placeholder testimonials.
   const isLive = live !== null && live.reviews.length > 0
+  let cards: Card[]
+  if (isLive) cards = toCards(live!.reviews)
+  else if (GOOGLE_REVIEWS.length > 0) cards = staticGoogleCards()
+  else cards = fallbackCards()
+
+  // True when the cards shown are real Google reviews (live or copied), driving
+  // the Google badge, "write a review" CTA and "see all on Google" footer.
+  const hasGoogle = isLive || GOOGLE_REVIEWS.length > 0
 
   const ratingValue = live?.rating != null ? live.rating.toFixed(1) : '4.9'
   const totalLabel = live?.total != null
@@ -81,6 +99,8 @@ export default async function ReviewsPage() {
             Real stories from real adventurers.{' '}
             {isLive
               ? 'These are live reviews pulled straight from our Google Business profile.'
+              : hasGoogle
+              ? 'These are real reviews from our Google Business profile.'
               : 'Every review is unedited and submitted directly by travellers who explored Africa with us.'}
           </p>
         </div>
@@ -106,7 +126,7 @@ export default async function ReviewsPage() {
               <div className="flex items-center gap-2 mb-2">
                 <GoogleGlyph className="w-5 h-5" />
                 <span className="font-caps text-[11px] tracking-[0.16em] uppercase text-brand-dark font-semibold">
-                  {isLive ? 'Live from Google' : 'Rated on Google'}
+                  {isLive ? 'Live from Google' : hasGoogle ? 'From Google' : 'Rated on Google'}
                 </span>
               </div>
               <p className="font-body text-[13px] font-light leading-[1.7] text-[#4A6741] max-w-xs">
@@ -204,7 +224,7 @@ export default async function ReviewsPage() {
           ))}
         </div>
 
-        {isLive && (
+        {hasGoogle && (
           <p className="text-center font-body text-[12px] text-[#8FA88A] mt-10">
             Showing our most recent Google reviews.{' '}
             <a href={mapsUri} target="_blank" rel="noreferrer" className="text-brand-teal hover:underline">
