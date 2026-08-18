@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight, Star } from 'lucide-react'
-import { TESTIMONIALS } from '@/lib/constants'
+import { TESTIMONIALS, type Review } from '@/lib/constants'
 import GoogleBadge from './GoogleBadge'
 
 function Stars({ count }: { count: number }) {
@@ -13,8 +13,8 @@ function Stars({ count }: { count: number }) {
   )
 }
 
-export default function Testimonials() {
-  const [featured, ...rest] = TESTIMONIALS
+export default function Testimonials({ reviews = TESTIMONIALS }: { reviews?: Review[] }) {
+  const [featured, ...rest] = reviews.length > 0 ? reviews : TESTIMONIALS
 
   return (
     <section className="px-16 py-32 bg-[#F5F0E8] max-lg:px-8 max-md:px-6" id="testimonials">

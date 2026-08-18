@@ -1,12 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Star, ArrowRight, Quote } from 'lucide-react'
-import {
-  TESTIMONIALS,
-  GOOGLE_RATING,
-  GOOGLE_REVIEW_COUNT,
-  GOOGLE_REVIEWS_URL,
-} from '@/lib/constants'
+import { GOOGLE_REVIEWS_URL } from '@/lib/constants'
+import { getGoogleReviews } from '@/lib/google-reviews'
 import GoogleBadge from '@/components/GoogleBadge'
 
 export const metadata: Metadata = {
@@ -14,18 +10,20 @@ export const metadata: Metadata = {
   description: 'Read what our clients say about their Uganda safari experiences with À Bientôt Tour & Travels.',
 }
 
-const PLATFORMS = [
-  {
-    name: 'Google Reviews',
-    rating: GOOGLE_RATING.toFixed(1),
-    reviews: `${GOOGLE_REVIEW_COUNT}`,
-    color: 'bg-[#4285F4]',
-    href: GOOGLE_REVIEWS_URL,
-    logo: 'G',
-  },
-]
+export default async function ReviewsPage() {
+  const { reviews, rating, count } = await getGoogleReviews()
 
-export default function ReviewsPage() {
+  const PLATFORMS = [
+    {
+      name: 'Google Reviews',
+      rating: rating.toFixed(1),
+      reviews: `${count}`,
+      color: 'bg-[#4285F4]',
+      href: GOOGLE_REVIEWS_URL,
+      logo: 'G',
+    },
+  ]
+
   return (
     <main className="bg-[#FDFAF5] min-h-screen">
 
@@ -51,21 +49,21 @@ export default function ReviewsPage() {
           {/* Overall score */}
           <div className="flex items-center gap-6">
             <div className="text-center">
-              <span className="block font-display text-[72px] font-light text-brand-teal leading-none">{GOOGLE_RATING.toFixed(1)}</span>
+              <span className="block font-display text-[72px] font-light text-brand-teal leading-none">{rating.toFixed(1)}</span>
               <div className="flex gap-1 justify-center mt-2">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-brand-gold text-brand-gold" />
                 ))}
               </div>
-              <p className="font-body text-[12px] text-[#8FA88A] mt-1">{GOOGLE_REVIEW_COUNT} verified Google reviews</p>
+              <p className="font-body text-[12px] text-[#8FA88A] mt-1">{count} verified Google reviews</p>
             </div>
             <div className="h-16 w-px bg-[#D8E8D0] max-sm:hidden" />
             <div className="flex flex-col gap-2 max-sm:hidden">
-              {[
-                { label: '5 stars', pct: 100 },
-                { label: '4 stars', pct: 0 },
-                { label: '3 stars', pct: 0 },
-              ].map(({ label, pct }) => (
+              {[5, 4, 3].map((stars) => {
+                const n = reviews.filter((r) => r.rating === stars).length
+                const pct = reviews.length ? Math.round((n / reviews.length) * 100) : 0
+                return { label: `${stars} stars`, pct }
+              }).map(({ label, pct }) => (
                 <div key={label} className="flex items-center gap-3">
                   <span className="font-body text-[12px] text-[#8FA88A] w-12">{label}</span>
                   <div className="w-32 h-1.5 bg-[#D8E8D0] rounded-full overflow-hidden">
@@ -107,7 +105,7 @@ export default function ReviewsPage() {
       {/* ── Testimonial cards ── */}
       <section className="px-16 py-20 max-lg:px-8 max-md:px-6">
         <div className="flex flex-col gap-8 max-w-4xl mx-auto">
-          {TESTIMONIALS.map((t, i) => (
+          {reviews.map((t, i) => (
             <div key={t.name} className="bg-white border border-[#D8E8D0] rounded-3xl p-10 max-md:p-7 relative overflow-hidden">
               {/* Large quote mark */}
               <Quote className="absolute top-6 right-8 w-16 h-16 text-brand-teal/6" strokeWidth={1} />

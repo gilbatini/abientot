@@ -7,6 +7,7 @@ import Booking from '@/components/Booking'
 import Testimonials from '@/components/Testimonials'
 import Blog from '@/components/Blog'
 import TripPlanner from '@/components/TripPlanner'
+import { getGoogleReviews } from '@/lib/google-reviews'
 
 const Divider = () => (
   <div className="w-full h-px bg-gradient-to-r from-transparent via-[#D4A843]/30 to-transparent" />
@@ -35,7 +36,9 @@ const WHY_ITEMS = [
   },
 ]
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { reviews } = await getGoogleReviews()
+
   return (
     <>
       <Hero />
@@ -112,7 +115,7 @@ export default function HomePage() {
       <Divider />
       <Booking />
       <Divider />
-      <Testimonials />
+      <Testimonials reviews={reviews} />
       <Divider />
       <Blog />
       <Divider />

@@ -110,11 +110,24 @@ export const GOOGLE_REVIEWS_URL =
 export const GOOGLE_RATING = 5.0
 export const GOOGLE_REVIEW_COUNT = 3
 
+export type Review = {
+  name: string
+  country?: string
+  rating: number
+  text: string
+  avatar: string
+  source?: 'google' | 'manual'
+  date?: string
+}
+
 // Reviews copied verbatim from the Google Business Profile.
+// These act as the fallback whenever the live Places API fetch is unavailable
+// (no API key configured, network/quota error, or an empty response) — see
+// lib/google-reviews.ts.
 // `country` and `date` are optional; only reviews with written text appear as cards.
 // (One further 5★ Google review — Lapyem Oscar — has no written text, so it is
 //  counted in GOOGLE_REVIEW_COUNT above but has no card here.)
-export const TESTIMONIALS = [
+export const TESTIMONIALS: Review[] = [
   {
     name:    'Ramlah Nampenja',
     country: '',
