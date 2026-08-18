@@ -1,7 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Star, ArrowRight, Quote } from 'lucide-react'
-import { TESTIMONIALS } from '@/lib/constants'
+import {
+  TESTIMONIALS,
+  GOOGLE_RATING,
+  GOOGLE_REVIEW_COUNT,
+  GOOGLE_REVIEWS_URL,
+} from '@/lib/constants'
+import GoogleBadge from '@/components/GoogleBadge'
 
 export const metadata: Metadata = {
   title: 'Traveller Reviews | À Bientôt Tour & Travels',
@@ -10,19 +16,11 @@ export const metadata: Metadata = {
 
 const PLATFORMS = [
   {
-    name: 'TripAdvisor',
-    rating: '5.0',
-    reviews: '180+',
-    color: 'bg-[#00AF87]',
-    href: '#',
-    logo: 'T',
-  },
-  {
     name: 'Google Reviews',
-    rating: '4.9',
-    reviews: '120+',
+    rating: GOOGLE_RATING.toFixed(1),
+    reviews: `${GOOGLE_REVIEW_COUNT}`,
     color: 'bg-[#4285F4]',
-    href: '#',
+    href: GOOGLE_REVIEWS_URL,
     logo: 'G',
   },
 ]
@@ -53,20 +51,20 @@ export default function ReviewsPage() {
           {/* Overall score */}
           <div className="flex items-center gap-6">
             <div className="text-center">
-              <span className="block font-display text-[72px] font-light text-brand-teal leading-none">4.9</span>
+              <span className="block font-display text-[72px] font-light text-brand-teal leading-none">{GOOGLE_RATING.toFixed(1)}</span>
               <div className="flex gap-1 justify-center mt-2">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-brand-gold text-brand-gold" />
                 ))}
               </div>
-              <p className="font-body text-[12px] text-[#8FA88A] mt-1">300+ verified reviews</p>
+              <p className="font-body text-[12px] text-[#8FA88A] mt-1">{GOOGLE_REVIEW_COUNT} verified Google reviews</p>
             </div>
             <div className="h-16 w-px bg-[#D8E8D0] max-sm:hidden" />
             <div className="flex flex-col gap-2 max-sm:hidden">
               {[
-                { label: '5 stars', pct: 92 },
-                { label: '4 stars', pct: 6 },
-                { label: '3 stars', pct: 2 },
+                { label: '5 stars', pct: 100 },
+                { label: '4 stars', pct: 0 },
+                { label: '3 stars', pct: 0 },
               ].map(({ label, pct }) => (
                 <div key={label} className="flex items-center gap-3">
                   <span className="font-body text-[12px] text-[#8FA88A] w-12">{label}</span>
@@ -134,11 +132,19 @@ export default function ReviewsPage() {
                   <div className="flex items-center gap-3">
                     <div>
                       <p className="font-caps text-[10px] font-semibold tracking-[0.18em] uppercase text-brand-dark">{t.name}</p>
-                      <p className="font-body text-[12px] text-[#8FA88A] mt-0.5">{t.country}</p>
+                      {(t.country || t.date) && (
+                        <p className="font-body text-[12px] text-[#8FA88A] mt-0.5">
+                          {[t.country, t.date].filter(Boolean).join(' · ')}
+                        </p>
+                      )}
                     </div>
-                    <span className="ml-auto font-caps text-[8px] tracking-[0.2em] uppercase text-brand-teal/60 border border-brand-teal/20 bg-brand-teal/5 rounded-full px-3 py-1">
-                      Verified Traveller
-                    </span>
+                    {t.source === 'google' ? (
+                      <GoogleBadge className="ml-auto" />
+                    ) : (
+                      <span className="ml-auto font-caps text-[8px] tracking-[0.2em] uppercase text-brand-teal/60 border border-brand-teal/20 bg-brand-teal/5 rounded-full px-3 py-1">
+                        Verified Traveller
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
